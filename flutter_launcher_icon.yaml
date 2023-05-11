@@ -1,0 +1,21 @@
+# For create new launcher icon run following command:
+#  flutter pub get
+#  flutter pub run flutter_launcher_icons:main -f flutter_launcher_icon.yaml
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/launcher/logo-ios.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  remove_alpha_ios: true
+  web:
+    generate: true
+    image_path: "assets/launcher/logo-android.png"
+    background_color: "#ffffff"
+    theme_color: "#ffffff"
+  windows:
+    generate: true
+    image_path: "assets/launcher/logo-android.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/launcher/logo-ios.png"

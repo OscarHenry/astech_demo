@@ -1,0 +1,600 @@
+{
+  "login": {
+    "select_env_title": "Sélectionner un environnement",
+    "login": "Connexion",
+    "remember_me": "Souviens-toi de moi",
+    "errors": {
+      "expired_invitation": "Cette invitation a expiré.",
+      "required_email": "Veuillez saisir votre adresse e-mail et votre mot de passe.",
+      "invalid_email": "Veuillez saisir une adresse e-mail et un mot de passe valides."
+    }
+  },
+  "registration": {
+    "title": "Enregistrement de l'utilisateur",
+    "explanation": "Veuillez compléter les informations ci-dessous pour créer votre compte asTech.",
+    "confirm_agreement": "J'ai examiné et j'accepte asTech",
+    "errors": {
+      "agreement": "Veuillez accepter notre politique de confidentialité"
+    }
+  },
+  "lost_invitation": {
+    "title": "Récupération d'invitation",
+    "explanation": "Veuillez entrer votre email pour demander une autre invitation.",
+    "dialog_title": "Nous avons bien reçu votre demande d'invitation!",
+    "dialog_subtitle": "Des instructions supplémentaires seront envoyées à l'e-mail que vous avez fourni. Cela peut prendre quelques minutes. Si vous ne recevez pas de courriel, veuillez communiquer avec le service à la clientèle au 1.888.486.1166.",
+    "send_invite_btn": "Envoyer",
+    "errors": {
+      "invalid_email": "Veuillez saisir une adresse e-mail valide."
+    }
+  },
+  "forgot_password": {
+    "title": "Avez-vous oublié votre mot de passe",
+    "explanation": "Entrez votre email et nous vous enverrons un lien de réinitialisation pour créer un nouveau mot de passe",
+    "dialog_title": "Nous avons bien reçu votre demande de réinitialisation de mot de passe!",
+    "dialog_subtitle": "Des instructions supplémentaires seront envoyées à l'e-mail que vous avez fourni. Cela peut prendre quelques minutes.\n\nSi vous ne recevez pas de courriel, veuillez communiquer avec le service à la clientèle au 1.888.486.1166.",
+    "errors": {
+      "invalid_email": "Veuillez saisir une adresse e-mail valide."
+    }
+  },
+  "reset_password": {
+    "title": "Réinitialiser le mot de passe",
+    "explanation": "Votre mot de passe doit comporter au moins 8 caractères et contenir au moins une lettre, un chiffre et un caractère spécial.",
+    "new_password": "Nouveau mot de passe",
+    "confirm_new_password": "Confirmer le nouveau mot de passe",
+    "dialog_title": "Votre mot de passe a été modifié.",
+    "dialog_subtitle": "Veuillez vous connecter avec vos nouveaux identifiants",
+    "errors": {
+      "invalid_password": "Le mot de passe ne répond pas aux critères."
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "Vous n'avez aucune notification"
+  },
+  "about_us": {
+    "title": "À propos de nous",
+    "header1": "Notre vision est d'être reconnue comme le leader des services technologiques de l'industrie automobile.",
+    "section1": "Chez asTech, en utilisant notre technologie brevetée, nous nous efforçons chaque jour de fournir nos services de diagnostic et d'étalonnage à distance avec rapidité et la plus haute qualité. Notre équipe de techniciens ASE et formés en usine s'associe à nos clients pour réparer les automobiles les plus complexes d'aujourd'hui. sur la route.",
+    "section2": "Basée à Plano, TX, asTech se concentre sur la fourniture de services de réparation de diagnostic électronique de véhicule OEM aux ateliers de réparation. Notre service permet aux ateliers qui ne disposent pas de techniciens en électronique de niveau expert de travailler sur n'importe quel véhicule, quelle que soit sa complexité, et de recevoir les conseils d'un maître technicien. "
+  },
+  "shop_devices": {
+    "title": "Acheter des appareils",
+    "search_hint": "Rechercher par numéro d'appareil",
+    "explanation": "Les appareils favoris apparaîtront en haut des écrans Appareils et Magasin.",
+    "column1": "Type d'appareil",
+    "column2": "Nombre",
+    "column3": "Favori"
+  },
+  "contact_us": {
+    "title": "Contactez-nous",
+    "header1": "Service client",
+    "section1": "Notre personnel est là pour vous aider et vous assister pour tout problème ou toute question que vous pourriez avoir.",
+    "email_us": "Envoyez-nous un e-mail",
+    "email_service": "Envoyez un e-mail à notre service client",
+    "header2": "Nos bureaux",
+    "headquarters": "Siège social",
+    "east_office": "Bureau régional de l'Est",
+    "europe_office": "Bureau européen",
+    "canadian_office": "Bureau canadien"
+  },
+  "privacy_policy": {
+    "title": "Politique de confidentialité",
+    "section1": "Les pratiques de confidentialité énoncées sur cette page s'appliquent uniquement à ce site Web. Si vous créez un lien vers d'autres sites Web, veuillez consulter les politiques de confidentialité publiées sur ces sites.",
+    "section2": "Merci de visiter www.astech.com, le site Web pour asTech®. Cette politique de confidentialité vous explique comment nous utilisons les informations personnelles collectées sur ce site. Veuillez lire cette politique de confidentialité avant d'utiliser notre site ou de soumettre des informations personnelles. . En utilisant le site, vous acceptez les pratiques décrites dans les présentes. Ces pratiques peuvent être modifiées. Les modifications seront publiées et ne s'appliqueront qu'aux activités et aux informations à l'avenir, et non rétroactivement. Nous vous encourageons à consulter la politique de confidentialité chaque fois que vous visitez le site pour vous assurer que vous comprenez comment les informations personnelles seront utilisées. ",
+    "header1": "Collecte et diffusion d'informations",
+    "section3": "Nous recueillons des informations personnellement identifiables lorsque soumises volontairement par les visiteurs du site. Ces informations ne sont utilisées que pour répondre à votre demande spécifique, sauf si vous nous donnez la permission de les utiliser d'une autre manière. Nous pouvons partager des informations avec des agences gouvernementales ou d'autres sociétés qui nous aident dans la prévention des fraudes ou les enquêtes. Nous pouvons le faire lorsque: (1) autorisés ou requis par la loi; ou (2) essayant de protéger ou de prévenir une fraude réelle ou potentielle ou des transactions non autorisées; ou, (3) enquêter fraude qui a déjà eu lieu. Les informations ne sont pas fournies à ces sociétés à des fins de marketing. ",
+    "header2": "Cookie / Tracking Technology",
+    "section4": "asTech® peut utiliser des cookies et une technologie de suivi sur ce site. Les cookies sont utiles pour collecter des informations relatives au type de navigateur et au système d'exploitation, ou pour suivre le nombre de visiteurs et comprendre comment les visiteurs utilisent le site. Les cookies peuvent aident également à personnaliser le site pour votre navigateur. Les informations personnelles ne peuvent pas être collectées via des cookies; cependant, si vous avez précédemment fourni des informations personnellement identifiables, les cookies peuvent être liés à ces informations. Les cookies agrégés et les informations de suivi peuvent être partagés avec des tiers. ",
+    "header3": "Engagement pour la sécurité des données",
+    "section5": "Vos informations personnelles identifiables sont conservées en sécurité. Seuls les employés, agents et sous-traitants autorisés (qui ont agreed pour garder les informations sécurisées et confidentielles) ont accès à ces informations. Tous les e-mails et newsletters de ce site vous permettent de ne plus recevoir de mailings. ",
+    "section6": "Nous nous réservons le droit d'apporter des modifications à cette politique."
+  },
+  "invitation_review": {
+    "title": "Invitation en attente",
+    "pending": "Cette invitation est en attente",
+    "invitation_date": "Date d'invitation",
+    "confirm_delete": "Êtes-vous sûr de vouloir supprimer cette invitation",
+    "delete_invitation": "Supprimer l'invitation",
+    "resend": "Renvoyer"
+  },
+  "invite_user": {
+    "title": "Inviter des utilisateurs",
+    "explanation": "L'utilisateur recevra un e-mail avec un lien pour télécharger l'application et un tutoriel sur la façon de s'inscrire à votre boutique",
+    "add_more": "Ajouter plus d'utilisateurs",
+    "invite": "Envoyer des Invitations",
+    "errors": {
+      "email_required": "Veuillez saisir une adresse e-mail",
+      "email_format": "Veuillez corriger le format de l'e-mail",
+      "email_exist": "Cette adresse e-mail existe déjà dans ce compte"
+    }
+  },
+  "member_edit_profile": {
+    "title": "Modifier le Profil",
+    "change_role_confirm": "Êtes-vous sûr de vouloir mettre à jour le rôle?",
+    "admin_role_update": "Vous ne pouvez pas mettre à jour le rôle d'un autre administrateur de boutique"
+  },
+  "member_profile": {
+    "title": "Profil d'utilisateur",
+    "active_date": "Date d'activation",
+    "delete_profile": "Supprimer le utilisateur",
+    "confirm_delete": "Êtes-vous sûr de vouloir supprimer ce profil"
+  },
+  "permissions": {
+    "title": "Permissions des utilisateurs",
+    "manage_users": "Gérer les utilisateurs",
+    "invite_users": "Inviter des utilisateurs",
+    "submit_requests": "Soumettre des demandes",
+    "view_reports": "Afficher les rapports",
+    "view_invoices": "Afficher les factures"
+  },
+  "user": {
+    "pending": "En attente",
+    "select_role": "Sélectionner un rôle",
+    "title": "Gestion des utilisateurs",
+    "search_hint": "Rechercher par nom"
+  },
+  "history_filter": {
+    "title": "Filtre",
+    "clear_all": "Tout effacer",
+    "last_week": "7 derniers jours",
+    "last_month": "30 derniers jours",
+    "custom_range": "Plage personnalisée",
+    "year": "Year",
+    "make": "Make",
+    "model": "Model",
+    "insurance company": "compagnie d'assurance",
+    "service request": "Demande de service",
+    "technician": "Technicien",
+    "status": "Status",
+    "date range": "Plage de dates"
+  },
+  "history": {
+    "search_hint": "Recherche par RO #, YMM ou VIN"
+  },
+  "order_details": {
+    "title": "Détails de la commande",
+    "log": "Journal d'activité",
+    "voided_by": "Annulé par",
+    "completed_by": "Complété par",
+    "submitted_by": "Soumis par",
+    "service_history": "Historique du service",
+    "recommendations": "Recomendaciones",
+    "scan_readings": "Lecturas de Escaneo",
+    "service_details": "Detalles de Servicio",
+    "snapshot_data": "Datos Instantanea",
+    "additional_documents": "Documents Supplémentaires",
+    "no_documents": "Aucun document supplémentaire",
+    "scan_tool": "Herramienta de Escaneo",
+    "tool_type": "Typo de Herramienta"
+  },
+  "error": {
+    "title": "Erreur",
+    "explanation": "Une erreur s'est produite, veuillez réessayer plus tard"
+  },
+  "account": {
+    "title": "Paramètre",
+    "logout": "Se déconnecter",
+    "account": "Account",
+    "contact_us": "Contact Us",
+    "help": "Centre d'aide",
+    "guides": "Guides de l'utilisateur",
+    "wifi_config": "Configure Wi-Fi",
+    "about_us": "About Us",
+    "privacy_policy": "Privacy Policy",
+    "profile": "Profile",
+    "call_us": "Appelez-nous"
+  },
+  "help_filters": {
+    "title": "Filtres"
+  },
+  "help": {
+    "title": "Centre d'aide",
+    "explanation": "Vous trouverez ci-dessous les réponses aux questions relatives à votre nouvelle expérience client. Parcourez les questions par sujet ou utilisez la barre de recherche pour rechercher la question à laquelle vous souhaitez répondre",
+    "search_hint": "Rechercher n'importe quel mot"
+  },
+  "profile": {
+    "title": "My Profil",
+    "edit_title": "Modifier le Profil",
+    "user_information": "Informations sur l'utilisateur",
+    "related_shops": "Boutiques associées",
+    "current_shop": "Boutique actuelle",
+    "date_joined": "Date d'inscription"
+  },
+  "new_request": {
+    "insurance_section_title": "Pour garantir des recommandations d'analyse précises, veuillez d'abord sélectionner le fournisseur d'assurance.",
+    "insurance_section_input_hint": "Compagnie d'assurance",
+    "calibration_title": "Demander un étalonnage",
+    "calibration_detail_title": "Informations d'étalonnage",
+    "target_system_input_title": "Système cible",
+    "target_system_input_hint": "Système cible",
+    "calibration_system_input_title": "Système(s) à calibrer",
+    "calibration_system_input_hint": "Sélectionner les systèmes",
+    "calibration_selected_system": "Systèmes sélectionnés",
+    "calibration_post_scan_after_calibration": "Effectuer une post-scan complète après l'étalonnage?",
+    "ro_input_hint": "Numéro de commande de réparation",
+    "job_input_hint": "Job ID",
+    "odometer_input_hint": "Odomètre",
+    "vehicle_damage_info": "Informations sur les dommages au véhicule",
+    "impact": "Sélectionnez le point d'impact",
+    "damage_level": "Niveau de dégâts",
+    "vehicle_information": "Informations sur le véhicule",
+    "confirm_exit": "Êtes-vous sûr de vouloir quitter?",
+    "asign_to_self": "Voulez-vous vous attribuer ce bon de travail?",
+    "no_damage_confirmation": "Êtes-vous sûr de vouloir soumettre?",
+    "no_damage_body": "Vous n'avez pas encore sélectionné de dommage ni de type de perte",
+    "add_note": "Ajouter une note",
+    "done": "fait",
+    "waiting_dialog_header": "Nous créons votre demande",
+    "waiting_dialog_body": "Cela peut prendre quelques secondes. Cette fenêtre se fermera automatiquement",
+    "error_dialog_header": "Une erreur s'est produite",
+    "error_dialog_body": "Veuillez réessayer plus tard ou contacter le service client",
+    "decode": "Décoder",
+    "phone": "Téléphoner",
+    "chat": "Discuter",
+    "title": "Demander une analyse OEM à distance",
+    "errors": {
+      "service_request_required": "Veuillez sélectionner une demande de service.",
+      "invalid_insurance": "Veuillez sélectionner une assurance valide.",
+      "invalid_model": "Veuillez sélectionner un modèle valide."
+    }
+  },
+  "new_request_scan_or_calibration_modal": {
+    "diagnostic_scan_title": "Analyse diagnostique",
+    "diagnostic_scan_description": "Demander une analyse à distance (OEM) ou locale",
+    "calibration_title": "Étalonnage",
+    "calibration_description": "Demander un étalonnage à distance"
+  },
+  "local_scan": {
+    "title": "Analyse locale",
+    "result_title": "Résultats de l'analyse Locale",
+    "scan_method": "Méthode d'analyse",
+    "check_engine_light": "Vérifier les voyants du moteur",
+    "check_engine_light_description": "Plus rapide: codes CEL uniquement",
+    "common_dash_lights": "Lumières communes du tableau de bord",
+    "common_dash_lights_description": "Systèmes rapides avec feux de tableau de bord (ABS, SRS, etc.)",
+    "all_modules": "Tous les modules",
+    "all_modules_description": "Complet - tous les systèmes du véhicule (y compris HVAC, stéréo, etc.)",
+    "scanning_vehicle": "Scanner le véhicule",
+    "keep_mobile_within_range": "Veuillez garder votre appareil mobile à portée Bluetooth de votre asTech.",
+    "scan_completed": "Votre analyse est terminée!",
+    "code_found": "code a été trouvé",
+    "codes_found": "codes ont été trouvés",
+    "interaction_required_title": "Interaction requise",
+    "interaction_required_body": "{manufacturer} recommande de couper puis de rallumer le contact du véhicule pour lire les codes de certains systèmes. Veuillez le faire maintenant avant de continuer.",
+    "errors": {
+      "connection_error_title": "Aucune connexion Bluetooth trouvée",
+      "connection_error_body": "Nous n'avons pas pu nous connecter à votre appareil asTech. Veuillez vous assurer que votre appareil mobile est à portée Bluetooth de votre asTech",
+      "connection_in_progress_title": "Connexion au Bluetooth",
+      "connection_in_progress_body": "Veuillez vous assurer que vous êtes à proximité de votre appareil asTech.",
+      "scan_error_title": "Impossible de se connecter au {to}",
+      "scan_permission_error_title": "Impossible de se connecter au Bluetooth",
+      "scan_permission_error_subtitle": "Les autorisations Bluetooth sont requises, veuillez vous assurer d'accorder les autorisations nécessaires pour cette fonctionnalité.",
+      "could_not_connect_ble_nearness": "Veuillez vous assurer que vous êtes à proximité de votre appareil asTech.",
+      "could_not_connect_server": "Nous n'avons pas pu nous connecter au serveur asTech. Si le problème persiste, veuillez contacter le support client.",
+      "could_not_connect_internet": "Veuillez vous assurer que votre appareil est connecté à Internet.",
+      "scan_error_body": "Nous n'avons pas pu nous connecter au véhicule. Veuillez vous assurer que le câble OBD est correctement connecté et que le véhicule est en état scannable.",
+      "lost_ble_title": "Connexion Bluetooth perdue",
+      "lost_ble_subtitle": "Impossible de terminer l'analyse. Veuillez débrancher votre asTech et le rebrancher avant de commencer une nouvelle demande"
+    },
+    "alert": {
+      "reset_device_title": "Réinitialisez votre appareil asTech",
+      "reset_device_description": "Veuillez débrancher votre asTech et le rebrancher avant de commencer une nouvelle requête"
+    }
+  },
+  "scan_result": {
+    "cleared": "Effacé",
+    "permanent": "Permanent",
+    "back_dialog": {
+      "title": "Terminer l'analyse locale",
+      "description": "Une fois cette session de numérisation terminée, vous ne pourrez plus effacer les codes lus dans cette session"
+    }
+  },
+  "code_details": {
+    "title": "Détails du code",
+    "definition": "Définition",
+    "pro_tip": "Astuce de pro",
+    "pro_tips": "ProTips",
+    "no_description": "Pas de description disponible"
+  },
+  "invoice": {
+    "share_topic": "facture asTech",
+    "share_body": "Bonjour, {userName} vous a envoyé une facture asTech pour le RO # {ro}."
+  },
+  "report": {
+    "share_topic": "rapport asTech",
+    "share_body": "Bonjour, {userName} vous a envoyé un rapport asTech pour RO # {ro}."
+  },
+  "device": {
+    "resume_request": "Veuillez appeler asTech au 1-888-486-1166 pour poursuivre la demande.",
+    "call_astech": "Appeler asTech",
+    "empty_connected": "Aucun appareil n'est actuellement connecté.",
+    "empty_offline": "Vous serez averti lorsqu'un appareil est disponible.",
+    "empty_submitted": "Les demandes soumises apparaîtront ici.",
+    "empty_completed": "Les demandes terminées apparaîtront ici.",
+    "empty_offline_notify": "Tous les appareils sont actuellement en cours d'utilisation.",
+    "get_notified_header": "Soyez averti lorsqu'un appareil est disponible.",
+    "get_notified_btn": "Prévenez-moi",
+    "contact_method": "Méthode préféré de contact",
+    "empty_unfiltered": "Connectez un appareil asTech au véhicule \n et démarrez un nouveaudemander."
+  },
+  "shop": {
+    "empty_case": "Conecte u dispositivo asTech para\nagregar un vehiculo a la lista.",
+    "ready_for_service": "Ready for {service}",
+    "service_in_progress": "{service} in Progress",
+    "service_completed": "{service} Complete",
+    "check_calibration": "Check adasThink report for\nrequired calibrations"
+  },
+  "alerts": {
+    "counter": "Vous avez {count} alertes"
+  },
+  "chat": {
+    "chat": "Chat",
+    "request_completed": "Demande terminée",
+    "waiting_for_technician": "En attente d'un technicien",
+    "waiting_for_technician_long": "En attente de la participation du technicien asTech. Nous serons avec vous momentanément",
+    "has_joined": "{name} a rejoint le chat",
+    "has_left": "{name} a quitté le chat",
+    "type_here": "Tapez ici",
+    "active_users": "Utilisateurs actifs",
+    "empty_case_text": "Les chats actifs apparaîtront ici",
+    "chat_log_button": "Afficher les journaux de chat",
+    "chat_completed": "La demande est terminée"
+  },
+  "user_guide": {
+    "title": "Mode D'emploi",
+    "download": "Télécharger"
+  },
+  "scan_type": {
+    "title": "Type de numérisationo",
+    "header_title": "Type de numérisationo",
+    "header_subtitle": "Le type de scan identifié ci-dessous est spécifique à ce véhicule et est conforme à ses règles d'atelier",
+    "remote_title": "OEM",
+    "remote_subtitle": "Demander une analyse OEM à distance",
+    "local_title": "OEM Compatibles",
+    "local_subtitle": "Scannez à côté de la voiture en utilisant votre asTech",
+    "local_unavailable_subtitle": "Scannez le bord de la voiture à l'aide de votre astech",
+    "unverified_title": "Analyse non vérifiée",
+    "unverified_subtitle": "Peut ne pas fournir une analyse de diagnostic suffisante sur ce véhicule",
+    "unverified_unavailable_subtitle": "Scannez le bord de la voiture à l'aide de votre astech",
+    "back_button_label": "Retour",
+    "create_button_label": "Créer",
+    "recommended": "Recommandé",
+    "required": "Requis",
+    "unverified": "Non vérifié",
+    "unverified_explanation": "Ce type d'analyse n'a pas été vérifié par asTech et peut ne pas fournir une analyse de diagnostic suffisante sur ce véhicule."
+  },
+  "common": {
+    "help": "Aide",
+    "calibration_info": "Informations d'étalonnage",
+    "ro": "RO",
+    "documents": "Documents",
+    "profile": "Profil",
+    "view_profile": "Voir le profil",
+    "date_sent": "Date d'envoi",
+    "actions": "Actions",
+    "delete_invite": "Supprimer l'invitation",
+    "send_again": "Envoyer à nouveau",
+    "add_user": "Ajouter un nouvel utilisateur",
+    "company_info": "Informations sur la société",
+    "shop_devices": "Acheter des appareils",
+    "select": "Sélectionner",
+    "finalize": "Finaliser",
+    "finish": "Finir",
+    "optional": "Optionnel",
+    "forgot_password": "Mot de passe oublié?",
+    "lost_invitation": "Vous avez perdu votre e-mail d'invitation?",
+    "email": "Email",
+    "password": "Password",
+    "privacy_policy": "Politique de confidentialité",
+    "contact_us": "Contactez-nous",
+    "name": "Nom",
+    "first_name": "Prénom",
+    "last_name": "Nom de famille",
+    "phone": "Phone",
+    "country": "Pays",
+    "languages": "Langue préférée",
+    "confirm_password": "Confirmer le mot de passe",
+    "submit": "Soumettre",
+    "send": "Envoyer",
+    "select_shop": "Sélectionner une boutique",
+    "year": "Year",
+    "make": "Make",
+    "model": "Model",
+    "device": "Device",
+    "devices": "Devices",
+    "history": "History",
+    "users": "Users",
+    "account": "Compte",
+    "settings": "Réglages",
+    "close": "Fermer",
+    "monday": "Lundi",
+    "friday": "vendredi",
+    "saturday": "samedi",
+    "role": "Role",
+    "cancel": "Annuler",
+    "save_changes": "Enregistrer les modifications",
+    "search_by_name": "Rechercher par nom",
+    "odometer": "Odomètre",
+    "insurance": "Assurance",
+    "warning_lights": "Feux d'avertissement",
+    "on": "On",
+    "off": "Off",
+    "drivable": "Drivable",
+    "non_drivable": "Non-Drivable",
+    "srs": "SRS déployé",
+    "contact_method": "Méthode de Contact",
+    "notes": "Notes",
+    "no_notes": "Pas de note",
+    "vehicle_damage": "Dommages au véhicule",
+    "service_request": "Demande de service",
+    "request": "Demande",
+    "adasThink_report_card_title": "Rapport de véhicule adasThink",
+    "tool_type_recommended_note": "*asTech recommande l'analyse à distance OEM.",
+    "back": "Retour",
+    "back_to_login": "Retour connexion",
+    "apply": "Appliquer",
+    "request_type": "Type de demande",
+    "calibration_type": "Type d'étalonnage",
+    "new_request": "Nouvelle demande",
+    "type_of_loss": "Type de perte",
+    "available": "Disponible",
+    "pending": "En attendant",
+    "connected": "Connecté",
+    "completed": "Terminé",
+    "submitted": "Soumis",
+    "in_use": "En cours d'utilisation",
+    "not_connected": "Déconnecter",
+    "ready_to_disconnect": "Déconnecter",
+    "next": "Suivant",
+    "report": "Signaler",
+    "invoice": "Facture",
+    "share": "Partage",
+    "download": "Télécharger",
+    "no_results_title": "Aucun résultat trouvé",
+    "no_results_subtitle": "Veuillez modifier votre critère de recherche",
+    "edit": "Edit",
+    "continue": "Continuer",
+    "yes": "Oui",
+    "no": "Non",
+    "ok": "D'accord",
+    "visit": "Visitez Repairify.com",
+    "day_ago": "jour",
+    "days_ago": "jours",
+    "hour_ago": "heure",
+    "hours_ago": "heures",
+    "minute_ago": "minute",
+    "minutes_ago": "minutes",
+    "sec_ago": "sec.",
+    "secs_ago": "secondes",
+    "year_ago": "an",
+    "years_ago": "années",
+    "month_ago": "mois",
+    "months_ago": "mois",
+    "details": "Détails",
+    "date": "Date",
+    "title": "Titre",
+    "last_activity": "Dernière Activité",
+    "shop": "Shop",
+    "select_all": "Seleccionar Todos",
+    "errors": {
+      "invalid_credential": "Nom d'utilisateur ou mot de passe invalide. Si vous pensez qu'il y a une erreur, veuillez contacter le service client",
+      "required_field": "Veuillez remplir les champs obligatoires.",
+      "invalid_length": "Un numéro à {count} chiffres est requis",
+      "invalid_max_length": "Le champ ne peut pas dépasser {count} caractères.",
+      "invalid_phone": "Veuillez entrer un téléphone valide.",
+      "invalid_language": "Veuillez sélectionner une langue.",
+      "invalid_password": "Le mot de passe doit comporter au minimum 8 caractères et contenir au moins une lettre, au moins un chiffre et au moins un caractère spécial.",
+      "matching_password": "Veuillez saisir les mots de passe correspondants.",
+      "required_fields": "Veuillez remplir tous les champs requis.",
+      "notes_invalid_max_length": "Le champ des notes ne peut pas dépasser {count} caractères.",
+      "odometer_invalid_max_length": "Le champ du compteur kilométrique ne peut pas dépasser {count} caractères.",
+      "inactive_account": "Nous sommes désolés, mais le compte auquel vous essayez de vous connecter est inactif. Veuillez contacter le service client au 1-888-486-1166 pour réactiver votre compte. Merci."
+    }
+  },
+  "enums": {
+    "severity": {
+      "informative": "Informatif",
+      "low": "Bas",
+      "medium": "Moyen",
+      "high": "High"
+    },
+    "damage_area": {
+      "front": "Devant",
+      "right_side": "Côté passager",
+      "rear": "Arrière",
+      "left_side": "Côté conducteur",
+      "roof": "Haut"
+    },
+    "damage_level": {
+      "cosmetic": "Cosmétique",
+      "light": "Lumière",
+      "moderate": "Modéré",
+      "severe": "Grave"
+    },
+    "device_status": {
+      "connected": "Connecté",
+      "submitted": "Utilisé",
+      "available": "Disponible",
+      "completed": "Prêt à déconnecter",
+      "scanning": "Utilisé",
+      "paired": "Utilisé"
+    },
+    "distance_units": {
+      "miles": "miles",
+      "kilometers": "kilomètres",
+      "km": "km",
+      "mi": "miles"
+    },
+    "loss_type": {
+      "collision": "Collision",
+      "comp": "Comp",
+      "fire": "Feu",
+      "flood": "Inondation",
+      "hail": "Grêle",
+      "repossession": "Reprise",
+      "suspension": "Suspension",
+      "theft_recovery": "Récupération de vol",
+      "vandalism": "Vandalisme",
+      "windshield": "Pare-brise",
+      "mother_nature": "Actes de Mère Nature"
+    },
+    "roles": {
+      "shop_admin": "Administrateur de la boutique",
+      "shop_user": "Utilisateur de la boutique",
+      "in_shop": "En boutique",
+      "accounting": "Comptabilité",
+      "estimator": "Estimator"
+    },
+    "service_request": {
+      "pre_scan": "Analyse de pré-réparation",
+      "post_scan": "Analyse après réparation",
+      "calibration": "Calibration de la caméra",
+      "adas_calibration": "ADAS",
+      "glass_calibration": "Verre seulement"
+    },
+    "order_status": {
+      "submitted": "soumis",
+      "completed": "terminé",
+      "voided": "voided",
+      "in-progress": "in progress",
+      "waiting-on-shop": "waiting on shop"
+    }
+  },
+  "no_vin_found_modal": {
+    "no_vin_found": "VIN introuvable",
+    "decode": "Décoder",
+    "hint_vin": "Entrez le VIN",
+    "description": "Le véhicule auquel vous êtes connecté ne permet pas la détection automatique du VIN. Veuillez entrer le VIN manuellement."
+  },
+  "tutorials": {
+    "shop": {
+      "title": "Introducing the Shop Dashboard!",
+      "navigation_icon_description": "A faster way to view the status of scan and calibration requests, grouped by vehicle.",
+      "vehicle_scan_item_description": "Any vehicle recently connected to an asTech device will appear in your vehicle list.\n\nTap a vehicle to start a new request, see details, or view service history.",
+      "vehicle_scan_item_description_tablet": "Any vehicle recently connected to an asTech device will appear in your vehicle list. Select a vehicle to: \n\n• See details\n• Start a new request\n• View service history",
+      "scan_history_description": "View all requests associated to a vehicle in one place. Click any Request to see full details.",
+      "scan_tracker_description": "See what's complete and what's still needed to get the vehicle back on the road safely.",
+      "new_request_description": "Plug in your asTech device and tap “New Request” to begin any scan, calibration or inspection request."
+    }
+  },
+  "update": {
+    "back": "Retour à asTech",
+    "better_than_ever": "Mieux que jamais",
+    "check": "Vérifier les mises à jour",
+    "checking": "Vérification...",
+    "current_version": "Version actuelle",
+    "downloading": "Téléchargement...",
+    "download_failed": "Le téléchargement a échoué. Veuillez réessayer.",
+    "ensure_best_experience": "Pour garantir la meilleure expérience, une mise à jour doit être effectuée.",
+    "installing": "Installer",
+    "leave_the _app_open": "Veuillez laisser l'application ouverte pendant la mise à jour.",
+    "new": "Nouveau",
+    "release_notes": "Notes de version",
+    "thank": "Merci pour votre patience!",
+    "updates": "Mises à jour",
+    "update_available": "Mise à jour disponible!",
+    "update_complete": "Mise à jour terminée!",
+    "update_now": "Mettez à jour maintenant",
+    "up_to_date": "L'application est à jour!"
+  }
+}

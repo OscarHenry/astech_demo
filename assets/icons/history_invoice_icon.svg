@@ -1,0 +1,9 @@
+<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5 2.5H7a.75.75 0 0 0-.75.75v17.5c0 .414.336.75.75.75h11.5a.75.75 0 0 0 .75-.75V3.25a.75.75 0 0 0-.75-.75zM7 1a2.25 2.25 0 0 0-2.25 2.25v17.5A2.25 2.25 0 0 0 7 23h11.5a2.25 2.25 0 0 0 2.25-2.25V3.25A2.25 2.25 0 0 0 18.5 1H7z" fill="#1F74DB"/>
+    <rect x="11.25" y="3.75" width="1.125" height="3.75" rx=".563" transform="rotate(90 11.25 3.75)" fill="#1F74DB"/>
+    <rect x="11.25" y="6.75" width="1.125" height="3.75" rx=".563" transform="rotate(90 11.25 6.75)" fill="#1F74DB"/>
+    <rect x="18" y="9.75" width="1.125" height="10.5" rx=".563" transform="rotate(90 18 9.75)" fill="#1F74DB"/>
+    <rect x="18" y="12.75" width="1.125" height="10.5" rx=".563" transform="rotate(90 18 12.75)" fill="#1F74DB"/>
+    <rect x="18" y="15.75" width="1.125" height="10.5" rx=".563" transform="rotate(90 18 15.75)" fill="#1F74DB"/>
+    <rect x="18" y="18.75" width="1.125" height="3.75" rx=".563" transform="rotate(90 18 18.75)" fill="#1F74DB"/>
+</svg>

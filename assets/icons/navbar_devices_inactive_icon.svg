@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <path stroke="#111" stroke-linecap="round" stroke-linejoin="round" d="M2 11.929c1.785-.78 2.193-.327 3.006.187" transform="translate(-33 -894) translate(0 886) translate(33 8)"/>
+                    <path stroke="#111" stroke-linecap="round" stroke-linejoin="round" d="M2 19.929c1.696-.741 2.15-.369 2.888.11" transform="translate(-33 -894) translate(0 886) translate(33 8) matrix(1 0 0 -1 0 39.55)"/>
+                    <path stroke="#111" stroke-linecap="round" stroke-linejoin="round" d="M27.037 11.929c1.923-.84 2.248-.25 3.204.307" transform="translate(-33 -894) translate(0 886) translate(33 8) matrix(-1 0 0 1 57.277 0)"/>
+                    <path stroke="#111" stroke-linecap="round" stroke-linejoin="round" d="M26.943 19.68c1.985-.868 2.268-.21 3.298.36" transform="translate(-33 -894) translate(0 886) translate(33 8) rotate(180 28.592 19.65)"/>
+                    <path stroke="#111" stroke-linejoin="round" d="M5 9H27V23H5z" transform="translate(-33 -894) translate(0 886) translate(33 8)"/>
+                    <path fill="#111" d="M20.026 12.774h-7.94v3.61h7.94v-3.61zm-.723.602v2.406h-6.496v-2.406h6.496zM23.917 18.662L23.917 19.383 7.917 19.383 7.917 18.662zM24 12.887L24 13.609 21 13.609 21 12.887zM24 15.774L24 16.496 21 16.496 21 15.774zM11 12.887L11 13.609 8 13.609 8 12.887zM11 15.774L11 16.496 8 16.496 8 15.774z" transform="translate(-33 -894) translate(0 886) translate(33 8)"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

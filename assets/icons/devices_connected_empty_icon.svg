@@ -1,0 +1,19 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M78 78.153v5.822" stroke="#0F396B" stroke-width="4" stroke-miterlimit="10"/>
+    <path d="M121.871 94.284h-6.104c-.722 0-1.412-.267-1.993-.785-.502-.454-1.082-1.145-1.631-2.196" stroke="#0F396B" stroke-width="2.354" stroke-miterlimit="10" stroke-linecap="round"/>
+    <path d="M16.786 105.048c-3.843-1.051-7.766-2.761-11.249-5.492C4.58 98.803 4 97.673 4 96.466v-3.83l1.522-1.867-.173-8.363a1.506 1.506 0 0 1 1.412-1.538l11.406-.643S29.306 72.269 40.9 71.39c11.594-.88 20.301 0 20.301 0s10.653.502 28.397 12.458M90.963 106.853l-54.8-.707" stroke="#0F396B" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round"/>
+    <path d="M30 80s5.095 4.179 22.666 4.179h37.826s13.54.706 21.353 2.228c6.856 1.334 10.464 5.115 11.264 6.026.11.125.157.282.141.455l-.69 10.026c-.063.879-.392 1.742-.973 2.401-.392.424-.863.816-1.365.879-1.223.172-11.076.894-11.076.894" stroke="#0F396B" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round"/>
+    <path d="M54 71.626v12.349" stroke="#0F396B" stroke-width="4" stroke-miterlimit="10"/>
+    <circle cx="26.36" cy="103.107" r="8.893" stroke="#0F396B" stroke-width="4"/>
+    <circle cx="100.32" cy="103.107" r="8.893" stroke="#0F396B" stroke-width="4"/>
+    <path d="m82.711 23.258-.044-.024c-.561-.331-.815-.88-.579-1.236l4.342-5.668c.237-.339.745-.436 1.14-.201l.027.016c.394.226.517.694.289 1.033l-3.71 6.04c-.246.355-.895.38-1.456.048M82.711 36.758l-.044-.024c-.561-.331-.815-.88-.579-1.236l4.342-5.668c.237-.339.745-.436 1.14-.201l.027.016c.394.226.517.694.289 1.033l-3.71 6.04c-.246.355-.895.38-1.456.048" fill="#1F74DB"/>
+    <rect x="41" y="14" width="3" height="28" rx="1.5" fill="#1F74DB"/>
+    <rect x="81" y="14" width="3" height="28" rx="1.5" fill="#1F74DB"/>
+    <rect x="40" y="22" width="3" height="12" rx=".75" fill="#1F74DB"/>
+    <rect x="56.5" y="25" width="12" height="6" rx="1.125" stroke="#1F74DB" stroke-width="2"/>
+    <path stroke="#1F74DB" stroke-width="3" d="M42.5 17.5h40v21h-40z"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M71 45a4 4 0 0 1 4 4v2h-2v-2a2 2 0 1 0-4 0v2h-2v-2a4 4 0 0 1 4-4zM65 57a4 4 0 0 1-4-4v-2h2v2a2 2 0 1 0 4 0v-2h2v2a4 4 0 0 1-4 4z" fill="#1F74DB"/>
+    <path fill="#1F74DB" d="M63 40h-2v12h2zM75 51h-2v4h2z"/>
+    <path d="M78 55a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v3h8v-3z" fill="#1F74DB"/>
+    <path d="M77 57a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v3h6v-3z" fill="#1F74DB"/>
+</svg>

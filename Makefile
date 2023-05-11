@@ -21,6 +21,18 @@ analyze:
 format:
 	dart format -l 80 lib/
 
+
+.PHONY: icon
+icon:
+	fvm flutter pub get
+	fvm flutter pub run flutter_launcher_icons:main -f flutter_launcher_icon.yaml
+
+.PHONY: splash
+splash:
+	fvm flutter pub get
+	fvm flutter pub run flutter_native_splash:create --path=flutter_native_splash.yaml
+
+
 .PHONY: build
 build:
 	fvm flutter pub run build_runner build --delete-conflicting-outputs

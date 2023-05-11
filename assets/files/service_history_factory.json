@@ -1,0 +1,467 @@
+{
+    "count": 4,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": "2a080629-f121-4c29-a202-55b8e133dce0",
+            "service_request": {
+                "id": 1,
+                "name": "Post-Repair Scan",
+                "external_id": "313",
+                "tag": "pre-repair-scan",
+                "show_in_dropdown": true,
+                "is_local_scan_supported": true,
+                "order": 1
+            },
+            "external_workorder_id": null,
+            "organization": {
+                "id": "167a9c93-3c63-406c-a381-76c7b591e56d",
+                "name": "UAT & Shop 2",
+                "is_active": true,
+                "title": "Shop Title",
+                "line1": "Sesamo St",
+                "line2": "Boulevar",
+                "line3": null,
+                "city": "Merida",
+                "city_id": 47,
+                "state": "Michigan",
+                "state_id": 22,
+                "postcode": "97138",
+                "country": "United States",
+                "country_code": "US",
+                "country_id": 1,
+                "phone_number": "+15647910092",
+                "external_id": "0016A00000SoLxgQAF",
+                "cod": false,
+                "status": "ACTIVE",
+                "account_type": [
+                    {
+                        "id": "1",
+                        "name": "Safelite",
+                        "salesforce_id": "Safelite"
+                    }
+                ],
+                "external_parent_id": "",
+                "external_parent_name": "",
+                "external_grandparent_id": "",
+                "external_grandparent_name": "",
+                "operating_hours": [],
+                "timezone_name": null,
+                "spoken_language": {
+                    "code": "es",
+                    "name": "Spanish"
+                },
+                "currency": "USD",
+                "contract_retail_id": "28dca61b-d2fa-401b-8c3c-cb8f0eea6393",
+                "contract_shop_id": "be82c8ec-cba8-49cb-8cb3-b417ff5042eb",
+                "is_demo": false,
+                "is_internal": false,
+                "create_shop_invoice": true,
+                "create_retail_invoice": true,
+                "contract_shop_name": null,
+                "contract_retail_name": null,
+                "settings": {
+                    "autel_device_email": "connect.cent@gmail.com",
+                    "local_scan_enabled": true,
+                    "shop_rules_enabled": true,
+                    "use_legacy": false
+                },
+                "contact": "Raul Alvarez Picoso"
+            },
+            "ro": "456123",
+            "astech_wo": 10005031,
+            "device": {
+                "id": "aa89fbe0-acea-4756-8e3c-24838570f624",
+                "serial_number": "20639",
+                "device_type": 1,
+                "status": 3,
+                "is_resumed_request": true,
+                "notes": ""
+            },
+            "vehicle": {
+                "id": "084a3a74-c3ca-4711-964b-5460f7bc2e94",
+                "vin": "19XFC2F76HE202801",
+                "year": 2019,
+                "make": "Honda",
+                "model": "Civic",
+                "scan_history": true,
+                "last_wo": null
+            },
+            "status": 1,
+            "internal_status": 7,
+            "insurance": {
+                "id": "317338bf-29a4-461a-a52f-03b6a59b098a",
+                "name": "Customer Pay"
+            },
+            "submitted_at": "2022-10-13T02:30:45.706443Z",
+            "submitted_by": {
+                "id": "3737fdc8-cb0b-4e7b-a050-6ce1e6cfe716",
+                "email": "r90.alvarez@gmail.com",
+                "external_id": "212121",
+                "phone_number": "+15613044644",
+                "first_name": "Raul",
+                "last_name": "Alvarez Picoso",
+                "language": {
+                    "code": "en-us",
+                    "name": "English"
+                }
+            },
+            "assign_to": null,
+            "assign_to_self": false,
+            "completed_at": "2022-10-13T02:31:12.186300Z",
+            "completed_by": "",
+            "is_in_exception": false,
+            "post_repair_after_calib": false,
+            "snap_on_calibration": null,
+            "target_system": null,
+            "systems_to_calibrate": [],
+            "tool_type": "REMOTE_OEM"
+        },
+        {
+            "id": "f3de825f-cbd0-4512-bd18-94bb2071dc3b",
+            "service_request": {
+                "id": 1,
+                "name": "Calibration",
+                "external_id": "313",
+                "tag": "camare-calibration",
+                "show_in_dropdown": true,
+                "is_local_scan_supported": true,
+                "order": 1
+            },
+            "external_workorder_id": null,
+            "organization": {
+                "id": "167a9c93-3c63-406c-a381-76c7b591e56d",
+                "name": "UAT & Shop 2",
+                "is_active": true,
+                "title": "Shop Title",
+                "line1": "Sesamo St",
+                "line2": "Boulevar",
+                "line3": null,
+                "city": "Merida",
+                "city_id": 47,
+                "state": "Michigan",
+                "state_id": 22,
+                "postcode": "97138",
+                "country": "United States",
+                "country_code": "US",
+                "country_id": 1,
+                "phone_number": "+15647910092",
+                "external_id": "0016A00000SoLxgQAF",
+                "cod": false,
+                "status": "ACTIVE",
+                "account_type": [
+                    {
+                        "id": "1",
+                        "name": "Safelite",
+                        "salesforce_id": "Safelite"
+                    }
+                ],
+                "external_parent_id": "",
+                "external_parent_name": "",
+                "external_grandparent_id": "",
+                "external_grandparent_name": "",
+                "operating_hours": [],
+                "timezone_name": null,
+                "spoken_language": {
+                    "code": "es",
+                    "name": "Spanish"
+                },
+                "currency": "USD",
+                "contract_retail_id": "28dca61b-d2fa-401b-8c3c-cb8f0eea6393",
+                "contract_shop_id": "be82c8ec-cba8-49cb-8cb3-b417ff5042eb",
+                "is_demo": false,
+                "is_internal": false,
+                "create_shop_invoice": true,
+                "create_retail_invoice": true,
+                "contract_shop_name": null,
+                "contract_retail_name": null,
+                "settings": {
+                    "autel_device_email": "connect.cent@gmail.com",
+                    "local_scan_enabled": true,
+                    "shop_rules_enabled": true,
+                    "use_legacy": false
+                },
+                "contact": "Raul Alvarez Picoso"
+            },
+            "ro": "456123",
+            "astech_wo": 10005030,
+            "device": {
+                "id": "aa89fbe0-acea-4756-8e3c-24838570f624",
+                "serial_number": "20639",
+                "device_type": 1,
+                "status": 3,
+                "is_resumed_request": true,
+                "notes": ""
+            },
+            "vehicle": {
+                "id": "084a3a74-c3ca-4711-964b-5460f7bc2e94",
+                "vin": "19XFC2F76HE202801",
+                "year": 2019,
+                "make": "Honda",
+                "model": "Civic",
+                "scan_history": true,
+                "last_wo": null
+            },
+            "status": 3,
+            "internal_status": 7,
+            "insurance": {
+                "id": "317338bf-29a4-461a-a52f-03b6a59b098a",
+                "name": "Customer Pay"
+            },
+            "submitted_at": "2022-10-13T02:07:35.053884Z",
+            "submitted_by": {
+                "id": "3737fdc8-cb0b-4e7b-a050-6ce1e6cfe716",
+                "email": "r90.alvarez@gmail.com",
+                "external_id": "212121",
+                "phone_number": "+15613044644",
+                "first_name": "Raul",
+                "last_name": "Alvarez Picoso",
+                "language": {
+                    "code": "en-us",
+                    "name": "English"
+                }
+            },
+            "assign_to": null,
+            "assign_to_self": false,
+            "completed_at": "2022-10-13T02:08:20.062578Z",
+            "completed_by": "",
+            "is_in_exception": false,
+            "post_repair_after_calib": false,
+            "snap_on_calibration": null,
+            "target_system": null,
+            "systems_to_calibrate": [],
+            "tool_type": "LOCAL_OEM_COMPATIBLE"
+        },
+        {
+            "id": "f3de825f-cbd0-4512-bd18-94bb2071dc3b",
+            "service_request": {
+                "id": 1,
+                "name": "AdasThink Report",
+                "external_id": "313",
+                "tag": "pre-repair-scan",
+                "show_in_dropdown": true,
+                "is_local_scan_supported": true,
+                "order": 1
+            },
+            "external_workorder_id": null,
+            "organization": {
+                "id": "167a9c93-3c63-406c-a381-76c7b591e56d",
+                "name": "UAT & Shop 2",
+                "is_active": true,
+                "title": "Shop Title",
+                "line1": "Sesamo St",
+                "line2": "Boulevar",
+                "line3": null,
+                "city": "Merida",
+                "city_id": 47,
+                "state": "Michigan",
+                "state_id": 22,
+                "postcode": "97138",
+                "country": "United States",
+                "country_code": "US",
+                "country_id": 1,
+                "phone_number": "+15647910092",
+                "external_id": "0016A00000SoLxgQAF",
+                "cod": false,
+                "status": "ACTIVE",
+                "account_type": [
+                    {
+                        "id": "1",
+                        "name": "Safelite",
+                        "salesforce_id": "Safelite"
+                    }
+                ],
+                "external_parent_id": "",
+                "external_parent_name": "",
+                "external_grandparent_id": "",
+                "external_grandparent_name": "",
+                "operating_hours": [],
+                "timezone_name": null,
+                "spoken_language": {
+                    "code": "es",
+                    "name": "Spanish"
+                },
+                "currency": "USD",
+                "contract_retail_id": "28dca61b-d2fa-401b-8c3c-cb8f0eea6393",
+                "contract_shop_id": "be82c8ec-cba8-49cb-8cb3-b417ff5042eb",
+                "is_demo": false,
+                "is_internal": false,
+                "create_shop_invoice": true,
+                "create_retail_invoice": true,
+                "contract_shop_name": null,
+                "contract_retail_name": null,
+                "settings": {
+                    "autel_device_email": "connect.cent@gmail.com",
+                    "local_scan_enabled": true,
+                    "shop_rules_enabled": true,
+                    "use_legacy": false
+                },
+                "contact": "Raul Alvarez Picoso"
+            },
+            "ro": "h1",
+            "astech_wo": 10005030,
+            "device": {
+                "id": "aa89fbe0-acea-4756-8e3c-24838570f624",
+                "serial_number": "20639",
+                "device_type": 1,
+                "status": 3,
+                "is_resumed_request": true,
+                "notes": ""
+            },
+            "vehicle": {
+                "id": "084a3a74-c3ca-4711-964b-5460f7bc2e94",
+                "vin": "19XFC2F76HE202801",
+                "year": 2019,
+                "make": "Honda",
+                "model": "Civic",
+                "scan_history": true,
+                "last_wo": null
+            },
+            "status": 3,
+            "internal_status": 7,
+            "insurance": {
+                "id": "317338bf-29a4-461a-a52f-03b6a59b098a",
+                "name": "Customer Pay"
+            },
+            "submitted_at": "2022-10-13T02:07:35.053884Z",
+            "submitted_by": {
+                "id": "3737fdc8-cb0b-4e7b-a050-6ce1e6cfe716",
+                "email": "r90.alvarez@gmail.com",
+                "external_id": "212121",
+                "phone_number": "+15613044644",
+                "first_name": "Raul",
+                "last_name": "Alvarez Picoso",
+                "language": {
+                    "code": "en-us",
+                    "name": "English"
+                }
+            },
+            "assign_to": null,
+            "assign_to_self": false,
+            "completed_at": "2022-10-13T02:08:20.062578Z",
+            "completed_by": "",
+            "is_in_exception": false,
+            "post_repair_after_calib": false,
+            "snap_on_calibration": null,
+            "target_system": null,
+            "systems_to_calibrate": [],
+            "tool_type": "REMOTE_OEM"
+        },
+        {
+            "id": "f3de825f-cbd0-4512-bd18-94bb2071dc3b",
+            "service_request": {
+                "id": 1,
+                "name": "Pre-Repair Scan",
+                "external_id": "313",
+                "tag": "pre-repair-scan",
+                "show_in_dropdown": true,
+                "is_local_scan_supported": true,
+                "order": 1
+            },
+            "external_workorder_id": null,
+            "organization": {
+                "id": "167a9c93-3c63-406c-a381-76c7b591e56d",
+                "name": "UAT & Shop 2",
+                "is_active": true,
+                "title": "Shop Title",
+                "line1": "Sesamo St",
+                "line2": "Boulevar",
+                "line3": null,
+                "city": "Merida",
+                "city_id": 47,
+                "state": "Michigan",
+                "state_id": 22,
+                "postcode": "97138",
+                "country": "United States",
+                "country_code": "US",
+                "country_id": 1,
+                "phone_number": "+15647910092",
+                "external_id": "0016A00000SoLxgQAF",
+                "cod": false,
+                "status": "ACTIVE",
+                "account_type": [
+                    {
+                        "id": "1",
+                        "name": "Safelite",
+                        "salesforce_id": "Safelite"
+                    }
+                ],
+                "external_parent_id": "",
+                "external_parent_name": "",
+                "external_grandparent_id": "",
+                "external_grandparent_name": "",
+                "operating_hours": [],
+                "timezone_name": null,
+                "spoken_language": {
+                    "code": "es",
+                    "name": "Spanish"
+                },
+                "currency": "USD",
+                "contract_retail_id": "28dca61b-d2fa-401b-8c3c-cb8f0eea6393",
+                "contract_shop_id": "be82c8ec-cba8-49cb-8cb3-b417ff5042eb",
+                "is_demo": false,
+                "is_internal": false,
+                "create_shop_invoice": true,
+                "create_retail_invoice": true,
+                "contract_shop_name": null,
+                "contract_retail_name": null,
+                "settings": {
+                    "autel_device_email": "connect.cent@gmail.com",
+                    "local_scan_enabled": true,
+                    "shop_rules_enabled": true,
+                    "use_legacy": false
+                },
+                "contact": "Raul Alvarez Picoso"
+            },
+            "ro": "h1",
+            "astech_wo": 10005030,
+            "device": {
+                "id": "aa89fbe0-acea-4756-8e3c-24838570f624",
+                "serial_number": "20639",
+                "device_type": 1,
+                "status": 3,
+                "is_resumed_request": true,
+                "notes": ""
+            },
+            "vehicle": {
+                "id": "084a3a74-c3ca-4711-964b-5460f7bc2e94",
+                "vin": "19XFC2F76HE202801",
+                "year": 2019,
+                "make": "Honda",
+                "model": "Civic",
+                "scan_history": true,
+                "last_wo": null
+            },
+            "status": 3,
+            "internal_status": 7,
+            "insurance": {
+                "id": "317338bf-29a4-461a-a52f-03b6a59b098a",
+                "name": "Customer Pay"
+            },
+            "submitted_at": "2022-10-13T02:07:35.053884Z",
+            "submitted_by": {
+                "id": "3737fdc8-cb0b-4e7b-a050-6ce1e6cfe716",
+                "email": "r90.alvarez@gmail.com",
+                "external_id": "212121",
+                "phone_number": "+15613044644",
+                "first_name": "Raul",
+                "last_name": "Alvarez Picoso",
+                "language": {
+                    "code": "en-us",
+                    "name": "English"
+                }
+            },
+            "assign_to": null,
+            "assign_to_self": false,
+            "completed_at": "2022-10-13T02:08:20.062578Z",
+            "completed_by": "",
+            "is_in_exception": false,
+            "post_repair_after_calib": false,
+            "snap_on_calibration": null,
+            "target_system": null,
+            "systems_to_calibrate": [],
+            "tool_type": "LOCAL_OEM_COMPATIBLE"
+        }
+    ]
+}

@@ -1,0 +1,87 @@
+{
+    "count": 2,
+    "next": null,
+    "previous": null,
+    "results": [
+      {
+        "vehicle": {
+          "id": "084a3a74-c3ca-4711-964b-5460f7bc2e94",
+          "vin": "19XFC2F76HE202801",
+          "year": 2019,
+          "make": "Honda",
+          "model": "Civic"
+        },
+        "device": {
+          "id": "09c5095b-753a-44b7-a53e-5d295e01f3e4",
+          "serial_number": "100090",
+          "favorite": true,
+          "status": 1,
+          "type": {
+            "id": 1,
+            "name": "asTech",
+            "tag": "astech"
+          }
+        },
+        "work_order": null,
+        "scans": [
+          {
+            "id": "164e85a3-b812-4b80-bfb2-b7322559ce7f",
+            "name": "Pre-Repair Scan",
+            "tag": "pre-repair-scan",
+            "performed_at": "2022-12-28T06:01:37.394919Z"
+          },
+          {
+            "id": "e6254987-cb4e-4d43-b9f9-b9ea33a250ce",
+            "name": "Calibration",
+            "tag": "camera-calibration",
+            "performed_at": "2022-12-28T06:01:37.389862Z"
+          }
+        ],
+        "is_pending": false
+      },
+      {
+        "vehicle": {
+          "id": "39e35ccb-2b2d-40af-9a8a-bcf076686394",
+          "vin": "4F2CU08102KM50866",
+          "year": 2002,
+          "make": "Mazda",
+          "model": "Tribute"
+        },
+        "device": {
+          "id": "e056b6c4-1a52-4763-aebc-d333b63a4bc8",
+          "serial_number": "120002",
+          "favorite": true,
+          "status": 5,
+          "type": {
+            "id": 1,
+            "name": "asTech",
+            "tag": "astech"
+          }
+        },
+        "work_order": {
+          "id": "f52f0cad-3c78-4e61-8140-a10088e78f15",
+          "astech_wo": 10005854,
+          "ro": "5y5y",
+          "external_workorder_id": 10005854,
+          "internal_status": 1,
+          "status": 1,
+          "submitted_at": "2022-12-28T06:12:08.801145+00:00",
+          "service_request": {
+            "id": 3,
+            "name": "Calibration",
+            "external_id": "295",
+            "tag": "camera-calibration"
+          }
+        },
+        "scans": [
+          {
+            "id": "cddbbd53-b500-4930-be29-785d9a5c3633",
+            "name": "Pre-Repair Scan",
+            "tag": "pre-repair-scan",
+            "performed_at": "2022-12-28T06:05:40.399202Z"
+          }
+        ],
+        "is_pending": false
+      }
+    ]
+  }
