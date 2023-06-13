@@ -1,4 +1,4 @@
-import 'package:astech_demo/ui/login.dart';
+import 'package:astech_demo/ui/local_submission_form.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,10 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      home: const LocalSubmissionForm(),
     );
   }
 }
