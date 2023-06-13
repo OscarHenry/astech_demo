@@ -20,14 +20,11 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
   late final Field<String> roField;
   late final Field<String> odometerField;
   late final Field<String> unitField;
-  // static const String odometerFieldName = 'odometer';
-  // static const String unitFieldName = 'unit';
 
   // form field state
   FormBuilderState? get formFieldState => _formKey.currentState;
 
   // focus
-  // late final FocusNode odometerFocus = FocusNode(debugLabel: odometerFieldName);
   late final FocusNode submitBtnFocus = FocusNode(debugLabel: 'submit');
 
   // AccountType
@@ -37,28 +34,28 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
   void initState() {
     accountType = 'belron';
 
+    initializeFields();
+
+    // pre-populate data
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // init data
+      _formKey.currentState?.patchValue({
+        // roField.name: '',
+        // odometerField.name: '',
+        unitField.name: 'Miles'
+      });
+    });
+
+    super.initState();
+  }
+
+  void initializeFields() {
     roField = Field<String>(
       name: 'ro',
       required: true,
       labelText: 'RO#',
       hintText: 'Repair Order Number',
       helperText: 'Must contain less than 32 characters',
-    );
-
-    odometerField = Field<String>(
-      name: 'odometer',
-      required: true,
-      labelText: 'Odometer',
-      hintText: 'Odometer',
-      helperText: 'Must contain less than 7 characters',
-      validator: FormBuilderValidators.compose([
-        FormBuilderValidators.maxLength(7),
-      ]),
-    );
-
-    unitField = Field<String>(
-      name: 'unit',
-      required: true,
     );
 
     if (accountType == 'belron') {
@@ -81,15 +78,21 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
         ]);
     }
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      // init data
-      _formKey.currentState?.patchValue({
-        // roFieldName: '',
-        // odometerFieldName: '',
-        unitField.name: 'Miles'
-      });
-    });
-    super.initState();
+    odometerField = Field<String>(
+      name: 'odometer',
+      required: true,
+      labelText: 'Odometer',
+      hintText: 'Odometer',
+      helperText: 'Must contain less than 7 characters',
+      validator: FormBuilderValidators.compose([
+        FormBuilderValidators.maxLength(7),
+      ]),
+    );
+
+    unitField = Field<String>(
+      name: 'unit',
+      required: true,
+    );
   }
 
   @override
@@ -131,8 +134,6 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('form isValid: ${formFieldState?.isValid}'),
-                  Text('roField isValid: ${roField.isValid}'),
-                  Text('odoField isValid: ${odometerField.isValid}'),
                   Expanded(
                     child: Text('fieldsValues: ${formFieldState?.value}'),
                   ),
@@ -162,9 +163,6 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
                       onEditingComplete: () => node.nextFocus(),
                       focusNode: roField.focusNode,
                       validator: roField.validator,
-                      onChanged: (value) {
-                        debugPrint('onChanged ro $value');
-                      },
                     ),
                     const SizedBox(height: 18),
                     Row(
@@ -181,9 +179,6 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
                             maxLength: 7,
                             focusNode: odometerField.focusNode,
                             onEditingComplete: () => node.nextFocus(),
-                            onChanged: (value) {
-                              debugPrint('onChanged odometer $value');
-                            },
                           ),
                         ),
                         const SizedBox(width: 12),
@@ -195,9 +190,6 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
                               SwitchItem(title: 'Miles', value: 'Miles'),
                               SwitchItem(title: 'KM', value: 'KM'),
                             ],
-                            onChanged: (value) {
-                              debugPrint('onChanged units $value');
-                            },
                           ),
                         ),
                       ],
