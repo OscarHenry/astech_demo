@@ -44,7 +44,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
 
   @override
   void initState() {
-    accountType = 'belron';
+    accountType = 'safelite';
 
     // pre-populate data
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -219,7 +219,10 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
 
   late FormFieldValidator<String>? roValidator = FormBuilderValidators.compose([
     if (accountType == 'belron') FormBuilderValidators.equalLength(14),
-    if (accountType == 'safelite') FormBuilderValidators.equalLength(11),
+    if (accountType == 'safelite')
+      // + 1 character (-)
+      FormBuilderValidators.equalLength(12,
+          errorText: 'Value must have a length equal to 11'),
   ]);
 
   late TextInputType roKeyboardType =

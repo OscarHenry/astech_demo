@@ -32,7 +32,7 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
 
   @override
   void initState() {
-    accountType = 'atech';
+    accountType = 'safelite';
 
     initializeFields();
 
@@ -73,9 +73,8 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
       roField
         ..helperText = 'Value must have a length equal to 11'
         ..inputFormatters = [CustomFormatter.safeliteFormatter()]
-        ..validator = FormBuilderValidators.compose<String>([
-          FormBuilderValidators.equalLength(11),
-        ]);
+        ..validator = FormBuilderValidators.equalLength(12,
+            errorText: 'Value must have a length equal to 11');
     }
 
     odometerField = Field<String>(
