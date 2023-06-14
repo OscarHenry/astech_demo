@@ -55,7 +55,7 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
       _formKey.currentState?.patchValue({
         // roField.name: '',
         // odometerField.name: '',
-        unitFieldName: 'Miles'
+        unitFieldName: DistanceUnit.miles,
       });
     });
 
@@ -90,6 +90,7 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
         physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
           children: [
+            /// Header with Vehicle Information
             Container(
               height: 90,
               width: double.infinity,
@@ -120,6 +121,7 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    /// Ro/Job ID Input
                     CustomTextField(
                       fieldKey: roFieldKey,
                       name: roFieldName,
@@ -137,8 +139,11 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
                       keyboardType: roKeyboardType,
                     ),
                     const SizedBox(height: 18),
+
+                    /// Odometer
                     Row(
                       children: [
+                        /// Odometer Input
                         Expanded(
                           child: CustomTextField(
                             fieldKey: odometerFieldKey,
@@ -158,6 +163,8 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
                           ),
                         ),
                         const SizedBox(width: 12),
+
+                        /// Unit Selector
                         Expanded(
                           child: CustomSwitchField<DistanceUnit>(
                             fieldKey: unitFieldKey,
@@ -174,6 +181,8 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
                       ],
                     ),
                     const SizedBox(height: 24),
+
+                    /// Required note
                     const RequiredFootNote(),
                   ],
                 ),
@@ -182,6 +191,8 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
           ],
         ),
       ),
+
+      /// Buttons
       bottomNavigationBar: BottomNavigationForm(
         primaryFocusNode: cancelBtnFocus,
         secondaryFocusNode: submitBtnFocus,

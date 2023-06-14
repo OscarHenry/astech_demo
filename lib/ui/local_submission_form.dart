@@ -1,7 +1,6 @@
 import 'package:astech_demo/commons/distance_unit.dart';
 import 'package:astech_demo/customs/custom_text_field.dart';
 import 'package:astech_demo/customs/custom_switch_field.dart';
-import 'package:astech_demo/commons/field.dart';
 import 'package:astech_demo/commons/formatter.dart';
 import 'package:astech_demo/widgets/bottom_navigation_form.dart';
 import 'package:astech_demo/widgets/required_foot_note.dart';
@@ -91,6 +90,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
         physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
           children: [
+            /// Header with Vehicle Information
             Container(
               height: 90,
               width: double.infinity,
@@ -121,6 +121,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    /// Ro/Job ID Input
                     CustomTextField(
                       fieldKey: roFieldKey,
                       name: roFieldName,
@@ -138,8 +139,11 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
                       keyboardType: roKeyboardType,
                     ),
                     const SizedBox(height: 18),
+
+                    /// Odometer
                     Row(
                       children: [
+                        /// Odometer Input
                         Expanded(
                           child: CustomTextField(
                             fieldKey: odometerFieldKey,
@@ -159,6 +163,8 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
                           ),
                         ),
                         const SizedBox(width: 12),
+
+                        /// Unit Selector
                         Expanded(
                           child: CustomSwitchField<DistanceUnit>(
                             fieldKey: unitFieldKey,
@@ -175,6 +181,8 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
                       ],
                     ),
                     const SizedBox(height: 24),
+
+                    /// Required note
                     const RequiredFootNote(),
                   ],
                 ),
@@ -183,6 +191,8 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
           ],
         ),
       ),
+
+      /// Buttons
       bottomNavigationBar: BottomNavigationForm(
         primaryFocusNode: cancelBtnFocus,
         secondaryFocusNode: submitBtnFocus,
