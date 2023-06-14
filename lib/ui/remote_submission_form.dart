@@ -1,7 +1,6 @@
 import 'package:astech_demo/commons/distance_unit.dart';
 import 'package:astech_demo/customs/custom_text_field.dart';
 import 'package:astech_demo/customs/custom_switch_field.dart';
-import 'package:astech_demo/commons/field.dart';
 import 'package:astech_demo/commons/formatter.dart';
 import 'package:astech_demo/widgets/bottom_navigation_form.dart';
 import 'package:astech_demo/widgets/required_foot_note.dart';

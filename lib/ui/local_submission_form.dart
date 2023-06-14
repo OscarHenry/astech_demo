@@ -8,7 +8,6 @@ import 'package:astech_demo/widgets/required_foot_note.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_native_splash/cli_commands.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 class LocalSubmissionForm extends StatefulWidget {
