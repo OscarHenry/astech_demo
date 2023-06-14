@@ -106,6 +106,9 @@ class CustomTextField extends StatelessWidget {
                 helperText: helpText,
                 helperStyle: TextStyle(color: helperColor),
                 errorStyle: TextStyle(color: errorColor),
+                focusedErrorBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: errorBorderColor, width: 2),
+                ),
               ),
               inputFormatters: inputFormatters,
               style: style,
@@ -154,9 +157,28 @@ class CustomTextField extends StatelessWidget {
 
   Color get errorColor {
     Color errorColor = Colors.red;
+
+    if (isFocused) {
+      errorColor = Colors.blue;
+    }
+
     if (isRequiredError) {
       errorColor = Colors.black;
     }
+    // debugPrint('getErrorColor[$name]: $_errorColor');
+    return errorColor;
+  }
+
+  Color get errorBorderColor {
+    Color errorColor = Colors.red;
+
+    if (isFocused) {
+      errorColor = Colors.blueAccent;
+    }
+
+    // if (isRequiredError) {
+    //   errorColor = Colors.black;
+    // }
     // debugPrint('getErrorColor[$name]: $_errorColor');
     return errorColor;
   }
