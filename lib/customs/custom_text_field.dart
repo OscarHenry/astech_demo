@@ -60,11 +60,13 @@ class CustomTextField extends StatelessWidget {
   final TextInputType? keyboardType;
 
   bool get hasError => fieldKey?.currentState?.hasError == true;
+  bool get isTouched => fieldKey?.currentState?.isTouched == true;
+  bool get isValid => fieldKey?.currentState?.isValid == true;
+  bool get isRequiredError => fieldKey?.currentState?.errorText == 'required';
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -84,42 +86,67 @@ class CustomTextField extends StatelessWidget {
             ),
           ),
         const SizedBox(height: 4),
-        FormBuilderTextField(
-          key: fieldKey,
-          name: name,
-          controller: controller,
-          autovalidateMode: autovalidateMode,
-          validator: buildValidator(),
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.grey[100],
-            hintText: hintText,
-            helperText: helpText,
-            counterText: hideCounter ? '' : null,
+        StatefulBuilder(
+          builder: (context, setState) => Focus(
+            onFocusChange: (isFocused) {
+              setState(() {});
+            },
+            child: FormBuilderTextField(
+              key: fieldKey,
+              name: name,
+              controller: controller,
+              autovalidateMode: autovalidateMode,
+              validator: buildValidator(),
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.grey[100],
+                hintText: hintText,
+                counterText: hideCounter ? '' : null,
+                helperText: helpText,
+                helperStyle: TextStyle(
+                  color: helperColor,
+                ),
+                errorText: isRequiredError ? helpText : null,
+                errorStyle: TextStyle(
+                  color: errorColor,
+                ),
+              ),
+              inputFormatters: inputFormatters,
+              style: style,
+              enabled: enabled,
+              keyboardType: keyboardType,
+              maxLengthEnforcement: maxLengthEnforcement,
+              obscureText: obscureText,
+              readOnly: readOnly,
+              maxLength: maxLength,
+              focusNode: focusNode,
+              autofocus: autofocus,
+              onChanged: onChanged,
+              onEditingComplete: onEditingComplete,
+              onSaved: onSaved,
+              onSubmitted: onSubmitted,
+              onReset: onReset,
+            ),
           ),
-          inputFormatters: inputFormatters,
-          style: style,
-          enabled: enabled,
-          keyboardType: keyboardType,
-          maxLengthEnforcement: maxLengthEnforcement,
-          obscureText: obscureText,
-          readOnly: readOnly,
-          maxLength: maxLength,
-          focusNode: focusNode,
-          autofocus: autofocus,
-          onChanged: onChanged,
-          onEditingComplete: onEditingComplete,
-          onSaved: onSaved,
-          onSubmitted: onSubmitted,
-          onReset: onReset,
         ),
       ],
     );
   }
 
+  Color get helperColor {
+    if (focusNode?.hasPrimaryFocus == true && !hasError) return Colors.blue;
+    // if (hasError) return Colors.red;
+    return Colors.black;
+  }
+
+  Color get errorColor {
+    if (isRequiredError) return Colors.black;
+    return Colors.red;
+  }
+
   FormFieldValidator<String>? buildValidator() {
     return FormBuilderValidators.compose([
-      if (required) FormBuilderValidators.required(),
+      if (required) FormBuilderValidators.required(errorText: 'required'),
       if (validator != null) validator!,
     ]);
   }
