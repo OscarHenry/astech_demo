@@ -33,7 +33,7 @@ class CustomTextField extends StatelessWidget {
     this.keyboardType,
   });
 
-  final Key? fieldKey;
+  final GlobalKey<FormBuilderFieldState>? fieldKey;
   final String name;
   final TextEditingController? controller;
   final String? labelText;
@@ -59,8 +59,12 @@ class CustomTextField extends StatelessWidget {
   final MaxLengthEnforcement? maxLengthEnforcement;
   final TextInputType? keyboardType;
 
+  bool get hasError => fieldKey?.currentState?.hasError == true;
+
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,

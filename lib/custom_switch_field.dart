@@ -30,7 +30,7 @@ class CustomSwitchField<T> extends StatelessWidget {
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
     this.validator,
   });
-  final Key? fieldKey;
+  final GlobalKey<FormBuilderFieldState>? fieldKey;
   final String name;
   final bool required;
   final T? initialValue;
