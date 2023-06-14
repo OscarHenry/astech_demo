@@ -143,7 +143,7 @@ class CustomTextField extends StatelessWidget {
   Color get helperColor {
     Color helperColor = Colors.black;
 
-    if (fieldKey?.currentState?.hasError == true && isRequiredError) {
+    if (hasError == true && isRequiredError) {
       helperColor = Colors.black;
     }
 
@@ -159,12 +159,13 @@ class CustomTextField extends StatelessWidget {
     Color errorColor = Colors.red;
 
     if (isFocused) {
-      errorColor = Colors.blue;
+      if (isRequiredError) {
+        errorColor = Colors.black;
+      } else {
+        errorColor = Colors.blue;
+      }
     }
 
-    if (isRequiredError) {
-      errorColor = Colors.black;
-    }
     // debugPrint('getErrorColor[$name]: $_errorColor');
     return errorColor;
   }
@@ -176,9 +177,6 @@ class CustomTextField extends StatelessWidget {
       errorColor = Colors.blueAccent;
     }
 
-    // if (isRequiredError) {
-    //   errorColor = Colors.black;
-    // }
     // debugPrint('getErrorColor[$name]: $_errorColor');
     return errorColor;
   }

@@ -16,9 +16,9 @@ class SwitchItem<T> {
 }
 
 class CustomSwitchField<T> extends StatelessWidget {
-  const CustomSwitchField({
+  CustomSwitchField({
     super.key,
-    this.fieldKey,
+    GlobalKey<FormBuilderFieldState>? fieldKey,
     required this.name,
     this.required = false,
     this.initialValue,
@@ -29,8 +29,9 @@ class CustomSwitchField<T> extends StatelessWidget {
     this.focusNode,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
     this.validator,
-  });
-  final GlobalKey<FormBuilderFieldState>? fieldKey;
+  }) : fieldKey = fieldKey ?? GlobalKey<FormBuilderFieldState>();
+
+  final GlobalKey<FormBuilderFieldState> fieldKey;
   final String name;
   final bool required;
   final T? initialValue;
