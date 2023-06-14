@@ -1,10 +1,14 @@
+import 'package:astech_demo/commons/distance_unit.dart';
 import 'package:astech_demo/customs/custom_text_field.dart';
 import 'package:astech_demo/customs/custom_switch_field.dart';
 import 'package:astech_demo/commons/field.dart';
 import 'package:astech_demo/commons/formatter.dart';
+import 'package:astech_demo/widgets/bottom_navigation_form.dart';
+import 'package:astech_demo/widgets/required_foot_note.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_native_splash/cli_commands.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 class LocalSubmissionForm extends StatefulWidget {
@@ -37,6 +41,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
   late final FocusNode roFocus = FocusNode(debugLabel: roFieldName);
   late final FocusNode odometerFocus = FocusNode(debugLabel: odometerFieldName);
   late final FocusNode unitFocus = FocusNode(debugLabel: unitFieldName);
+  late final FocusNode cancelBtnFocus = FocusNode(debugLabel: 'cancel');
   late final FocusNode submitBtnFocus = FocusNode(debugLabel: 'submit');
 
   // AccountType
@@ -52,7 +57,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
       _formKey.currentState?.patchValue({
         // roField.name: '',
         // odometerField.name: '',
-        unitFieldName: 'Miles'
+        unitFieldName: DistanceUnit.miles,
       });
     });
 
@@ -64,6 +69,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
     roFocus.dispose();
     odometerFocus.dispose();
     unitFocus.dispose();
+    cancelBtnFocus.dispose();
     submitBtnFocus.dispose();
     super.dispose();
   }
@@ -72,6 +78,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
   Widget build(BuildContext context) {
     final node = FocusScope.of(context);
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Local'),
@@ -113,6 +120,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
               child: Padding(
                 padding: const EdgeInsets.all(24.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomTextField(
                       fieldKey: roFieldKey,
@@ -122,7 +130,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
                       hintText: roHintText,
                       helpText: roHelperText,
                       maxLength: 32,
-                      hideCounter: true,
+                      counterVisibility: true,
                       inputFormatters: roInputFormatters,
                       onEditingComplete: () => node.nextFocus(),
                       focusNode: roFocus,
@@ -145,42 +153,50 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
                             ]),
                             maxLength: 7,
                             focusNode: odometerFocus,
-                            onEditingComplete: () => node.nextFocus(),
-                            textInputAction: TextInputAction.next,
+                            onEditingComplete: () =>
+                                node.requestFocus(submitBtnFocus),
+                            textInputAction: TextInputAction.done,
                             keyboardType: TextInputType.number,
                           ),
                         ),
                         const SizedBox(width: 12),
                         Expanded(
-                          child: CustomSwitchField<String>(
+                          child: CustomSwitchField<DistanceUnit>(
                             fieldKey: unitFieldKey,
                             name: unitFieldName,
                             required: true,
-                            items: const [
-                              SwitchItem(title: 'Miles', value: 'Miles'),
-                              SwitchItem(title: 'KM', value: 'KM'),
-                            ],
+                            items: DistanceUnit.values
+                                .map(
+                                  (e) =>
+                                      SwitchItem(title: e.shortName, value: e),
+                                )
+                                .toList(),
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 24),
-                    ElevatedButton(
-                      autofocus: true,
-                      focusNode: submitBtnFocus,
-                      onPressed: formFieldState?.isValid == true
-                          ? () {
-                              node.unfocus();
-                            }
-                          : null,
-                      child: const Text('Submit'),
-                    )
+                    const RequiredFootNote(),
                   ],
                 ),
               ),
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationForm(
+        primaryFocusNode: cancelBtnFocus,
+        secondaryFocusNode: submitBtnFocus,
+        onPrimaryPressed: () {
+          node.unfocus();
+          Navigator.pop(context);
+        },
+        onSecondaryPressed: formFieldState?.isValid == true
+            ? () {
+                node.unfocus();
+                Navigator.pop(context);
+              }
+            : null,
       ),
     );
   }

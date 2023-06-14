@@ -15,7 +15,7 @@ class CustomTextField extends StatelessWidget {
     this.required = false,
     this.validator,
     this.maxLength,
-    this.hideCounter = false,
+    this.counterVisibility = false,
     this.controller,
     this.autofocus = true,
     this.focusNode,
@@ -32,6 +32,7 @@ class CustomTextField extends StatelessWidget {
     this.maxLengthEnforcement,
     this.keyboardType,
     this.textInputAction,
+    this.maxLines,
   });
 
   final GlobalKey<FormBuilderFieldState>? fieldKey;
@@ -44,7 +45,7 @@ class CustomTextField extends StatelessWidget {
   final bool required;
   final FormFieldValidator<String>? validator;
   final int? maxLength;
-  final bool hideCounter;
+  final bool counterVisibility;
   final bool autofocus;
   final FocusNode? focusNode;
   final ValueChanged<String?>? onChanged;
@@ -60,6 +61,7 @@ class CustomTextField extends StatelessWidget {
   final MaxLengthEnforcement? maxLengthEnforcement;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
+  final int? maxLines;
 
   bool get hasError => fieldKey?.currentState?.hasError == true;
   bool get isTouched => fieldKey?.currentState?.isTouched == true;
@@ -102,7 +104,7 @@ class CustomTextField extends StatelessWidget {
                 filled: true,
                 fillColor: Colors.grey[100],
                 hintText: hintText,
-                counterText: hideCounter ? '' : null,
+                counterText: counterVisibility ? '' : null,
                 helperText: helpText,
                 helperStyle: TextStyle(color: helperColor),
                 errorStyle: TextStyle(color: errorColor),
@@ -117,6 +119,7 @@ class CustomTextField extends StatelessWidget {
               maxLengthEnforcement: maxLengthEnforcement,
               obscureText: obscureText,
               readOnly: readOnly,
+              maxLines: maxLines,
               maxLength: maxLength,
               focusNode: focusNode,
               autofocus: autofocus,

@@ -1,8 +1,12 @@
-import 'package:astech_demo/customs/custom_switch_field.dart';
+import 'package:astech_demo/commons/distance_unit.dart';
 import 'package:astech_demo/customs/custom_text_field.dart';
+import 'package:astech_demo/customs/custom_switch_field.dart';
 import 'package:astech_demo/commons/field.dart';
 import 'package:astech_demo/commons/formatter.dart';
+import 'package:astech_demo/widgets/bottom_navigation_form.dart';
+import 'package:astech_demo/widgets/required_foot_note.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
@@ -20,11 +24,23 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
   FormBuilderState? get formFieldState => _formKey.currentState;
 
   // form fields
-  late final Field<String> roField;
-  late final Field<String> odometerField;
-  late final Field<String> unitField;
+  late final String roFieldName = 'ro';
+  late final String odometerFieldName = 'odometer';
+  late final String unitFieldName = 'unit';
+
+  // form fields key
+  late final GlobalKey<FormBuilderFieldState> roFieldKey =
+      GlobalKey<FormBuilderFieldState>(debugLabel: roFieldName);
+  late final GlobalKey<FormBuilderFieldState> odometerFieldKey =
+      GlobalKey<FormBuilderFieldState>(debugLabel: odometerFieldName);
+  late final GlobalKey<FormBuilderFieldState> unitFieldKey =
+      GlobalKey<FormBuilderFieldState>(debugLabel: unitFieldName);
 
   // focus
+  late final FocusNode roFocus = FocusNode(debugLabel: roFieldName);
+  late final FocusNode odometerFocus = FocusNode(debugLabel: odometerFieldName);
+  late final FocusNode unitFocus = FocusNode(debugLabel: unitFieldName);
+  late final FocusNode cancelBtnFocus = FocusNode(debugLabel: 'cancel');
   late final FocusNode submitBtnFocus = FocusNode(debugLabel: 'submit');
 
   // AccountType
@@ -34,71 +50,25 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
   void initState() {
     accountType = 'safelite';
 
-    initializeFields();
-
     // pre-populate data
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // init data
       _formKey.currentState?.patchValue({
         // roField.name: '',
         // odometerField.name: '',
-        unitField.name: 'Miles'
+        unitFieldName: 'Miles'
       });
     });
 
     super.initState();
   }
 
-  void initializeFields() {
-    roField = Field<String>(
-      name: 'ro',
-      required: true,
-      labelText: 'RO#',
-      hintText: 'Repair Order Number',
-      helperText: 'Value must have a length equal to 32',
-    );
-
-    if (accountType == 'belron') {
-      roField
-        ..labelText = 'Job ID'
-        ..hintText = 'Job ID'
-        ..helperText = 'Value must have a length equal to 14'
-        ..inputFormatters = [CustomFormatter.belronFormatter()]
-        ..validator = FormBuilderValidators.compose<String>([
-          FormBuilderValidators.equalLength(14),
-        ]);
-    }
-
-    if (accountType == 'safelite') {
-      roField
-        ..helperText = 'Value must have a length equal to 11'
-        ..inputFormatters = [CustomFormatter.safeliteFormatter()]
-        ..validator = FormBuilderValidators.equalLength(12,
-            errorText: 'Value must have a length equal to 11');
-    }
-
-    odometerField = Field<String>(
-      name: 'odometer',
-      required: true,
-      labelText: 'Odometer',
-      hintText: 'Odometer',
-      // helperText: 'Value must have a length equal to 7',
-      validator: FormBuilderValidators.compose([
-        FormBuilderValidators.maxLength(7),
-      ]),
-    );
-
-    unitField = Field<String>(
-      name: 'unit',
-      required: true,
-    );
-  }
-
   @override
   void dispose() {
-    roField.dispose();
-    odometerField.dispose();
-    unitField.dispose();
+    roFocus.dispose();
+    odometerFocus.dispose();
+    unitFocus.dispose();
+    cancelBtnFocus.dispose();
     submitBtnFocus.dispose();
     super.dispose();
   }
@@ -106,11 +76,11 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
   @override
   Widget build(BuildContext context) {
     final node = FocusScope.of(context);
-
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Remote'),
+        title: const Text('Local'),
         backgroundColor: Colors.white,
         bottom: const PreferredSize(
           preferredSize: Size.fromHeight(1),
@@ -120,7 +90,6 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
       body: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               height: 90,
@@ -141,10 +110,6 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
                 ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 24, right: 24, top: 24),
-              child: Text('Vehicle Information'),
-            ),
             FormBuilder(
               key: _formKey,
               onChanged: () {
@@ -154,64 +119,63 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
               child: Padding(
                 padding: const EdgeInsets.all(24.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomTextField(
-                      fieldKey: roField.key,
-                      name: roField.name,
-                      required: roField.required,
-                      labelText: roField.labelText,
-                      hintText: roField.hintText,
-                      helpText: roField.helperText,
+                      fieldKey: roFieldKey,
+                      name: roFieldName,
+                      required: true,
+                      labelText: roLabelText,
+                      hintText: roHintText,
+                      helpText: roHelperText,
                       maxLength: 32,
-                      hideCounter: true,
-                      inputFormatters: roField.inputFormatters,
+                      counterVisibility: true,
+                      inputFormatters: roInputFormatters,
                       onEditingComplete: () => node.nextFocus(),
-                      focusNode: roField.focusNode,
-                      validator: roField.validator,
+                      focusNode: roFocus,
+                      validator: roValidator,
+                      textInputAction: TextInputAction.next,
+                      keyboardType: roKeyboardType,
                     ),
                     const SizedBox(height: 18),
                     Row(
                       children: [
                         Expanded(
                           child: CustomTextField(
-                            fieldKey: odometerField.key,
-                            name: odometerField.name,
-                            required: odometerField.required,
-                            labelText: odometerField.labelText,
-                            hintText: odometerField.hintText,
-                            helpText: odometerField.helperText,
-                            validator: odometerField.validator,
+                            fieldKey: odometerFieldKey,
+                            name: odometerFieldName,
+                            required: true,
+                            labelText: 'Odometer',
+                            hintText: 'Odometer',
+                            validator: FormBuilderValidators.compose<String>([
+                              FormBuilderValidators.maxLength(7),
+                            ]),
                             maxLength: 7,
-                            focusNode: odometerField.focusNode,
-                            onEditingComplete: () => node.nextFocus(),
+                            focusNode: odometerFocus,
+                            onEditingComplete: () =>
+                                node.requestFocus(submitBtnFocus),
+                            textInputAction: TextInputAction.done,
+                            keyboardType: TextInputType.number,
                           ),
                         ),
                         const SizedBox(width: 12),
                         Expanded(
-                          child: CustomSwitchField<String>(
-                            fieldKey: unitField.key,
-                            name: unitField.name,
-                            items: const [
-                              SwitchItem(title: 'Miles', value: 'Miles'),
-                              SwitchItem(title: 'KM', value: 'KM'),
-                            ],
+                          child: CustomSwitchField<DistanceUnit>(
+                            fieldKey: unitFieldKey,
+                            name: unitFieldName,
+                            required: true,
+                            items: DistanceUnit.values
+                                .map(
+                                  (e) =>
+                                      SwitchItem(title: e.shortName, value: e),
+                                )
+                                .toList(),
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 18),
-                    // CustomTextField(name: 'name'),
                     const SizedBox(height: 24),
-                    ElevatedButton(
-                      autofocus: true,
-                      focusNode: submitBtnFocus,
-                      onPressed: formFieldState?.isValid == true
-                          ? () {
-                              node.unfocus();
-                            }
-                          : null,
-                      child: const Text('Submit'),
-                    )
+                    const RequiredFootNote(),
                   ],
                 ),
               ),
@@ -219,6 +183,65 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationForm(
+        primaryFocusNode: cancelBtnFocus,
+        secondaryFocusNode: submitBtnFocus,
+        onPrimaryPressed: () {
+          node.unfocus();
+          Navigator.pop(context);
+        },
+        onSecondaryPressed: formFieldState?.isValid == true
+            ? () {
+                node.unfocus();
+                Navigator.pop(context);
+              }
+            : null,
+      ),
     );
   }
+
+  String get roLabelText {
+    var labelText = 'RO#';
+    if (accountType == 'belron') {
+      labelText = 'Job ID';
+    }
+    return labelText;
+  }
+
+  String get roHintText {
+    var hintText = 'Repair Order Number';
+    if (accountType == 'belron') {
+      hintText = 'Job ID';
+    }
+    return hintText;
+  }
+
+  String get roHelperText {
+    var helperText = 'Value must have a length equal to 32';
+    if (accountType == 'belron') {
+      helperText = 'Value must have a length equal to 14';
+    }
+    if (accountType == 'safelite') {
+      helperText = 'Value must have a length equal to 11';
+    }
+    return helperText;
+  }
+
+  late List<TextInputFormatter>? roInputFormatters = [
+    if (accountType == 'belron') CustomFormatter.belronFormatter(),
+    if (accountType == 'safelite') CustomFormatter.safeliteFormatter(),
+  ];
+
+  late FormFieldValidator<String>? roValidator = FormBuilderValidators.compose([
+    if (accountType == 'belron') FormBuilderValidators.equalLength(14),
+    if (accountType == 'safelite')
+      // + 1 character (-)
+      FormBuilderValidators.equalLength(12,
+          errorText: 'Value must have a length equal to 11'),
+  ]);
+
+  late TextInputType roKeyboardType =
+      accountType == 'belron' || accountType == 'safelite'
+          ? TextInputType.number
+          : TextInputType.visiblePassword;
 }

@@ -92,6 +92,7 @@ class CustomSwitchField<T> extends StatelessWidget {
               indicatorWeight: 0,
               indicatorPadding: const EdgeInsets.all(4.0),
               indicatorSize: TabBarIndicatorSize.tab,
+              dividerColor: Colors.transparent,
               indicator: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
                 color: backgroundIndicatorC,
