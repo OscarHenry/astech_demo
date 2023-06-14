@@ -1,6 +1,4 @@
 import 'package:astech_demo/ui/home_screen.dart';
-import 'package:astech_demo/ui/local_submission_form.dart';
-import 'package:astech_demo/ui/remote_submission_form.dart';
 import 'package:flutter/material.dart';
 
 void main() {

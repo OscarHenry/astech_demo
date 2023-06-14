@@ -88,7 +88,6 @@ class CustomSwitchField<T> extends StatelessWidget {
             child: TabBar(
               padding: EdgeInsets.zero,
               automaticIndicatorColorAdjustment: true,
-              dividerColor: Colors.transparent,
               splashBorderRadius: BorderRadius.circular(50),
               indicatorWeight: 0,
               indicatorPadding: const EdgeInsets.all(4.0),
