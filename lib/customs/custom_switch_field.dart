@@ -57,7 +57,6 @@ class CustomSwitchField<T> extends StatelessWidget {
       ),
       builder: (field) {
         final hasError = field.hasError;
-        final errorText = field.errorText;
         final backgroundC =
             backgroundColor ?? Theme.of(context).scaffoldBackgroundColor;
         final backgroundIndicatorC = hasError

@@ -70,7 +70,6 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -139,27 +138,27 @@ class CustomTextField extends StatelessWidget {
   }
 
   Color get helperColor {
-    Color _helperColor = Colors.black;
+    Color helperColor = Colors.black;
 
     if (fieldKey?.currentState?.hasError == true && isRequiredError) {
-      _helperColor = Colors.black;
+      helperColor = Colors.black;
     }
 
     if (isFocused && !hasError) {
-      _helperColor = Colors.blue;
+      helperColor = Colors.blue;
     }
 
     // debugPrint('getHelperColor[$name]: $_helperColor');
-    return _helperColor;
+    return helperColor;
   }
 
   Color get errorColor {
-    Color _errorColor = Colors.red;
+    Color errorColor = Colors.red;
     if (isRequiredError) {
-      _errorColor = Colors.black;
+      errorColor = Colors.black;
     }
     // debugPrint('getErrorColor[$name]: $_errorColor');
-    return _errorColor;
+    return errorColor;
   }
 
   FormFieldValidator<String>? buildValidator() {
