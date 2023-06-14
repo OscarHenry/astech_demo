@@ -83,7 +83,7 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
       required: true,
       labelText: 'Odometer',
       hintText: 'Odometer',
-      helperText: 'Value must have a length equal to 7',
+      // helperText: 'Value must have a length equal to 7',
       validator: FormBuilderValidators.compose([
         FormBuilderValidators.maxLength(7),
       ]),

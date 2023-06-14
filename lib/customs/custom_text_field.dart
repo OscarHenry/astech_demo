@@ -31,6 +31,7 @@ class CustomTextField extends StatelessWidget {
     this.obscureText = false,
     this.maxLengthEnforcement,
     this.keyboardType,
+    this.textInputAction,
   });
 
   final GlobalKey<FormBuilderFieldState>? fieldKey;
@@ -58,11 +59,14 @@ class CustomTextField extends StatelessWidget {
   final bool obscureText;
   final MaxLengthEnforcement? maxLengthEnforcement;
   final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
 
   bool get hasError => fieldKey?.currentState?.hasError == true;
   bool get isTouched => fieldKey?.currentState?.isTouched == true;
   bool get isValid => fieldKey?.currentState?.isValid == true;
-  bool get isRequiredError => fieldKey?.currentState?.errorText == 'required';
+  bool get isRequiredError =>
+      (fieldKey?.currentState?.value as String?)?.isEmpty == true && required;
+  bool get isFocused => focusNode?.hasPrimaryFocus == true;
 
   @override
   Widget build(BuildContext context) {
@@ -87,11 +91,9 @@ class CustomTextField extends StatelessWidget {
           ),
         const SizedBox(height: 4),
         StatefulBuilder(
-          builder: (context, setState) => Focus(
-            onFocusChange: (isFocused) {
-              setState(() {});
-            },
-            child: FormBuilderTextField(
+          builder: (_, setState) {
+            _listenOnFocusChange(setState);
+            return FormBuilderTextField(
               key: fieldKey,
               name: name,
               controller: controller,
@@ -103,13 +105,8 @@ class CustomTextField extends StatelessWidget {
                 hintText: hintText,
                 counterText: hideCounter ? '' : null,
                 helperText: helpText,
-                helperStyle: TextStyle(
-                  color: helperColor,
-                ),
-                errorText: isRequiredError ? helpText : null,
-                errorStyle: TextStyle(
-                  color: errorColor,
-                ),
+                helperStyle: TextStyle(color: helperColor),
+                errorStyle: TextStyle(color: errorColor),
               ),
               inputFormatters: inputFormatters,
               style: style,
@@ -122,31 +119,52 @@ class CustomTextField extends StatelessWidget {
               focusNode: focusNode,
               autofocus: autofocus,
               onChanged: onChanged,
+              textInputAction: textInputAction,
               onEditingComplete: onEditingComplete,
               onSaved: onSaved,
               onSubmitted: onSubmitted,
               onReset: onReset,
-            ),
-          ),
+            );
+          },
         ),
       ],
     );
   }
 
+  void _listenOnFocusChange(StateSetter setState) {
+    focusNode?.addListener(() {
+      // debugPrint('onFocusChange[$name]: $_helperColor');
+      setState(() {});
+    });
+  }
+
   Color get helperColor {
-    if (focusNode?.hasPrimaryFocus == true && !hasError) return Colors.blue;
-    // if (hasError) return Colors.red;
-    return Colors.black;
+    Color _helperColor = Colors.black;
+
+    if (fieldKey?.currentState?.hasError == true && isRequiredError) {
+      _helperColor = Colors.black;
+    }
+
+    if (isFocused && !hasError) {
+      _helperColor = Colors.blue;
+    }
+
+    // debugPrint('getHelperColor[$name]: $_helperColor');
+    return _helperColor;
   }
 
   Color get errorColor {
-    if (isRequiredError) return Colors.black;
-    return Colors.red;
+    Color _errorColor = Colors.red;
+    if (isRequiredError) {
+      _errorColor = Colors.black;
+    }
+    // debugPrint('getErrorColor[$name]: $_errorColor');
+    return _errorColor;
   }
 
   FormFieldValidator<String>? buildValidator() {
     return FormBuilderValidators.compose([
-      if (required) FormBuilderValidators.required(errorText: 'required'),
+      if (required) FormBuilderValidators.required(errorText: helpText ?? ''),
       if (validator != null) validator!,
     ]);
   }

@@ -55,14 +55,14 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
       required: true,
       labelText: 'RO#',
       hintText: 'Repair Order Number',
-      helperText: 'Must contain less than 32 characters',
+      helperText: 'Value must have a length equal to 32',
     );
 
     if (accountType == 'belron') {
       roField
         ..labelText = 'Job ID'
         ..hintText = 'Job ID'
-        ..helperText = 'Must be contain 14 characters'
+        ..helperText = 'Value must have a length equal to 14'
         ..inputFormatters = [CustomFormatter.belronFormatter()]
         ..validator = FormBuilderValidators.compose<String>([
           FormBuilderValidators.equalLength(14),
@@ -71,7 +71,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
 
     if (accountType == 'safelite') {
       roField
-        ..helperText = 'Must be contain 11 characters'
+        ..helperText = 'Value must have a length equal to 11'
         ..inputFormatters = [CustomFormatter.safeliteFormatter()]
         ..validator = FormBuilderValidators.compose<String>([
           FormBuilderValidators.equalLength(11),
@@ -83,7 +83,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
       required: true,
       labelText: 'Odometer',
       hintText: 'Odometer',
-      helperText: 'Must contain less than 7 characters',
+      // helperText: 'Value must have a length equal to 7',
       validator: FormBuilderValidators.compose([
         FormBuilderValidators.maxLength(7),
       ]),
@@ -163,6 +163,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
                       onEditingComplete: () => node.nextFocus(),
                       focusNode: roField.focusNode,
                       validator: roField.validator,
+                      textInputAction: TextInputAction.next,
                     ),
                     const SizedBox(height: 18),
                     Row(
@@ -179,6 +180,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
                             maxLength: 7,
                             focusNode: odometerField.focusNode,
                             onEditingComplete: () => node.nextFocus(),
+                            textInputAction: TextInputAction.next,
                           ),
                         ),
                         const SizedBox(width: 12),
