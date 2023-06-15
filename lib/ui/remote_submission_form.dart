@@ -1,4 +1,5 @@
 import 'package:astech_demo/commons/distance_unit.dart';
+import 'package:astech_demo/customs/custom_radio_button_field.dart';
 import 'package:astech_demo/customs/custom_text_field.dart';
 import 'package:astech_demo/customs/custom_switch_field.dart';
 import 'package:astech_demo/commons/formatter.dart';
@@ -26,6 +27,9 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
   late final String roFieldName = 'ro';
   late final String odometerFieldName = 'odometer';
   late final String unitFieldName = 'unit';
+  late final String warningLightFieldName = 'warningLight';
+  late final String srsDeployedFieldName = 'srsDeployed';
+  late final String drivableFieldName = 'drivable';
 
   // form fields key
   late final GlobalKey<FormBuilderFieldState> roFieldKey =
@@ -34,11 +38,22 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
       GlobalKey<FormBuilderFieldState>(debugLabel: odometerFieldName);
   late final GlobalKey<FormBuilderFieldState> unitFieldKey =
       GlobalKey<FormBuilderFieldState>(debugLabel: unitFieldName);
+  late final GlobalKey<FormBuilderFieldState> warningLightFieldKey =
+      GlobalKey<FormBuilderFieldState>(debugLabel: warningLightFieldName);
+  late final GlobalKey<FormBuilderFieldState> srsDeployedFieldKey =
+      GlobalKey<FormBuilderFieldState>(debugLabel: srsDeployedFieldName);
+  late final GlobalKey<FormBuilderFieldState> drivableFieldKey =
+      GlobalKey<FormBuilderFieldState>(debugLabel: drivableFieldName);
 
   // focus
   late final FocusNode roFocus = FocusNode(debugLabel: roFieldName);
   late final FocusNode odometerFocus = FocusNode(debugLabel: odometerFieldName);
   late final FocusNode unitFocus = FocusNode(debugLabel: unitFieldName);
+  late final FocusNode warningLightFocus =
+      FocusNode(debugLabel: warningLightFieldName);
+  late final FocusNode srsDeployedFocus =
+      FocusNode(debugLabel: srsDeployedFieldName);
+  late final FocusNode drivableFocus = FocusNode(debugLabel: drivableFieldName);
   late final FocusNode cancelBtnFocus = FocusNode(debugLabel: 'cancel');
   late final FocusNode submitBtnFocus = FocusNode(debugLabel: 'submit');
 
@@ -56,6 +71,7 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
         // roField.name: '',
         // odometerField.name: '',
         unitFieldName: DistanceUnit.miles,
+        // warningLightFieldName: false,
       });
     });
 
@@ -67,6 +83,9 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
     roFocus.dispose();
     odometerFocus.dispose();
     unitFocus.dispose();
+    warningLightFocus.dispose();
+    srsDeployedFocus.dispose();
+    drivableFocus.dispose();
     cancelBtnFocus.dispose();
     submitBtnFocus.dispose();
     super.dispose();
@@ -79,7 +98,7 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
       extendBody: true,
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Local'),
+        title: const Text('Remote'),
         backgroundColor: Colors.white,
         bottom: const PreferredSize(
           preferredSize: Size.fromHeight(1),
@@ -89,6 +108,7 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
       body: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// Header with Vehicle Information
             Container(
@@ -108,6 +128,13 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
                     child: Text('fieldsValues: ${formFieldState?.value}'),
                   ),
                 ],
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 24.0),
+              child: Text(
+                'Vehicle Information',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
             FormBuilder(
@@ -156,8 +183,7 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
                             ]),
                             maxLength: 7,
                             focusNode: odometerFocus,
-                            onEditingComplete: () =>
-                                node.requestFocus(submitBtnFocus),
+                            onEditingComplete: () => node.nextFocus(),
                             textInputAction: TextInputAction.done,
                             keyboardType: TextInputType.number,
                           ),
@@ -176,9 +202,43 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
                                       SwitchItem(title: e.shortName, value: e),
                                 )
                                 .toList(),
+                            onChanged: (_) => node.nextFocus(),
                           ),
                         ),
                       ],
+                    ),
+                    const SizedBox(height: 18),
+
+                    /// Warning Light Input
+                    CustomRadioGroupField<bool>.binary(
+                      fieldKey: warningLightFieldKey,
+                      name: warningLightFieldName,
+                      labelText: 'Warning Light?',
+                      required: true,
+                      focusNode: warningLightFocus,
+                      onChanged: (_) => node.nextFocus(),
+                    ),
+                    const SizedBox(height: 18),
+
+                    /// SRS Deployed Input
+                    CustomRadioGroupField<bool>.binary(
+                      fieldKey: srsDeployedFieldKey,
+                      name: srsDeployedFieldName,
+                      labelText: 'SRS Deployed?',
+                      required: true,
+                      focusNode: srsDeployedFocus,
+                      onChanged: (_) => node.nextFocus(),
+                    ),
+                    const SizedBox(height: 18),
+
+                    /// Drivable Input
+                    CustomRadioGroupField<bool>.binary(
+                      fieldKey: drivableFieldKey,
+                      name: drivableFieldName,
+                      labelText: 'Drivable?',
+                      required: true,
+                      focusNode: drivableFocus,
+                      onChanged: (_) => node.nextFocus(),
                     ),
                     const SizedBox(height: 24),
 
