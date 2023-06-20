@@ -1,5 +1,7 @@
 import 'package:astech_demo/commons/distance_unit.dart';
-import 'package:astech_demo/customs/custom_radio_button_field.dart';
+import 'package:astech_demo/customs/custom_dropdown_group_field.dart';
+import 'package:astech_demo/customs/custom_phone_number_field.dart';
+import 'package:astech_demo/customs/custom_radio_group_button_field.dart';
 import 'package:astech_demo/customs/custom_text_field.dart';
 import 'package:astech_demo/customs/custom_switch_field.dart';
 import 'package:astech_demo/commons/formatter.dart';
@@ -8,7 +10,9 @@ import 'package:astech_demo/widgets/required_foot_note.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:form_builder_phone_field/form_builder_phone_field.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:phone_number/phone_number.dart';
 
 class RemoteSubmissionForm extends StatefulWidget {
   const RemoteSubmissionForm({super.key});
@@ -30,6 +34,9 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
   late final String warningLightFieldName = 'warningLight';
   late final String srsDeployedFieldName = 'srsDeployed';
   late final String drivableFieldName = 'drivable';
+  late final String contactMethodFieldName = 'contactMethod';
+  late final String notesFieldName = 'notes';
+  late final String phoneFieldName = 'phone';
 
   // form fields key
   late final GlobalKey<FormBuilderFieldState> roFieldKey =
@@ -44,6 +51,16 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
       GlobalKey<FormBuilderFieldState>(debugLabel: srsDeployedFieldName);
   late final GlobalKey<FormBuilderFieldState> drivableFieldKey =
       GlobalKey<FormBuilderFieldState>(debugLabel: drivableFieldName);
+  late final GlobalKey<FormBuilderFieldState<FormBuilderField<String>, String>>
+      contactMethodFieldKey =
+      GlobalKey<FormBuilderFieldState<FormBuilderField<String>, String>>(
+          debugLabel: contactMethodFieldName);
+  late final GlobalKey<FormBuilderFieldState<FormBuilderField<String>, String>>
+      notesFieldKey =
+      GlobalKey<FormBuilderFieldState<FormBuilderField<String>, String>>(
+          debugLabel: notesFieldName);
+  late final GlobalKey<FormBuilderFieldState> phoneFieldKey =
+      GlobalKey<FormBuilderFieldState>(debugLabel: phoneFieldName);
 
   // focus
   late final FocusNode roFocus = FocusNode(debugLabel: roFieldName);
@@ -54,6 +71,10 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
   late final FocusNode srsDeployedFocus =
       FocusNode(debugLabel: srsDeployedFieldName);
   late final FocusNode drivableFocus = FocusNode(debugLabel: drivableFieldName);
+  late final FocusNode contactMethodFocus =
+      FocusNode(debugLabel: contactMethodFieldName);
+  late final FocusNode notesFocus = FocusNode(debugLabel: notesFieldName);
+  late final FocusNode phoneFocus = FocusNode(debugLabel: phoneFieldName);
   late final FocusNode cancelBtnFocus = FocusNode(debugLabel: 'cancel');
   late final FocusNode submitBtnFocus = FocusNode(debugLabel: 'submit');
 
@@ -86,6 +107,9 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
     warningLightFocus.dispose();
     srsDeployedFocus.dispose();
     drivableFocus.dispose();
+    contactMethodFocus.dispose();
+    notesFocus.dispose();
+    phoneFocus.dispose();
     cancelBtnFocus.dispose();
     submitBtnFocus.dispose();
     super.dispose();
@@ -107,6 +131,7 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
       ),
       body: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
+        padding: const EdgeInsets.only(bottom: 72),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -119,15 +144,15 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
                 color: Colors.white,
                 boxShadow: kElevationToShadow[2],
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('form isValid: ${formFieldState?.isValid}'),
-                  Expanded(
-                    child: Text('fieldsValues: ${formFieldState?.value}'),
-                  ),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('form isValid: ${formFieldState?.isValid}'),
+                    Text('fieldsValues: ${formFieldState?.value}'),
+                  ],
+                ),
               ),
             ),
             const Padding(
@@ -141,7 +166,9 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
               key: _formKey,
               onChanged: () {
                 formFieldState!.save();
-                setState(() {});
+                if (mounted) {
+                  setState(() {});
+                }
               },
               child: Padding(
                 padding: const EdgeInsets.all(24.0),
@@ -157,9 +184,9 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
                       hintText: roHintText,
                       helpText: roHelperText,
                       maxLength: 32,
-                      counterVisibility: true,
+                      counterVisibility: false,
                       inputFormatters: roInputFormatters,
-                      onEditingComplete: () => node.nextFocus(),
+                      onEditingComplete: () => node.requestFocus(odometerFocus),
                       focusNode: roFocus,
                       validator: roValidator,
                       textInputAction: TextInputAction.next,
@@ -183,7 +210,8 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
                             ]),
                             maxLength: 7,
                             focusNode: odometerFocus,
-                            onEditingComplete: () => node.nextFocus(),
+                            onEditingComplete: () =>
+                                node.requestFocus(warningLightFocus),
                             textInputAction: TextInputAction.done,
                             keyboardType: TextInputType.number,
                           ),
@@ -202,7 +230,8 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
                                       SwitchItem(title: e.shortName, value: e),
                                 )
                                 .toList(),
-                            onChanged: (_) => node.nextFocus(),
+                            onChanged: (_) =>
+                                node.requestFocus(warningLightFocus),
                           ),
                         ),
                       ],
@@ -216,7 +245,7 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
                       labelText: 'Warning Light?',
                       required: true,
                       focusNode: warningLightFocus,
-                      onChanged: (_) => node.nextFocus(),
+                      onChanged: (_) => node.requestFocus(srsDeployedFocus),
                     ),
                     const SizedBox(height: 18),
 
@@ -227,7 +256,7 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
                       labelText: 'SRS Deployed?',
                       required: true,
                       focusNode: srsDeployedFocus,
-                      onChanged: (_) => node.nextFocus(),
+                      onChanged: (_) => node.requestFocus(drivableFocus),
                     ),
                     const SizedBox(height: 18),
 
@@ -238,7 +267,73 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
                       labelText: 'Drivable?',
                       required: true,
                       focusNode: drivableFocus,
-                      onChanged: (_) => node.nextFocus(),
+                      onChanged: (_) => node.requestFocus(contactMethodFocus),
+                    ),
+                    const SizedBox(height: 18),
+
+                    /// Preferred Contact Method Input
+                    CustomDropdownGroupField<String>(
+                      fieldKey: contactMethodFieldKey,
+                      name: contactMethodFieldName,
+                      labelText: 'Preferred contact method?',
+                      required: true,
+                      focusNode: contactMethodFocus,
+                      items: const [
+                        DropdownGroupItem<String>(value: 'chat', title: 'Chat'),
+                        DropdownGroupItem<String>(
+                            value: 'phone', title: 'Phone'),
+                        DropdownGroupItem<String>(value: 'text', title: 'Text'),
+                      ],
+                      onChanged: (_) => node.requestFocus(submitBtnFocus),
+                    ),
+
+                    if (contactMethodFieldKey.currentState?.value ==
+                        'text') ...[
+                      const SizedBox(height: 18),
+                      CustomPhoneNumberField(
+                        fieldKey: phoneFieldKey,
+                        name: phoneFieldName,
+                        focusNode: phoneFocus,
+                        labelText: 'Phone',
+                        required: true,
+                        regions: const [
+                          RegionInfo(
+                            name: 'United State',
+                            code: 'US',
+                            prefix: 1,
+                          ),
+                          RegionInfo(
+                            name: 'Canada',
+                            code: 'CAD',
+                            prefix: 1,
+                          ),
+                          RegionInfo(
+                            name: 'Mexico',
+                            code: 'MX',
+                            prefix: 52,
+                          )
+                        ],
+                      ),
+                    ],
+
+                    const SizedBox(height: 18),
+
+                    /// Notes Input
+                    CustomTextField(
+                      fieldKey: notesFieldKey,
+                      name: notesFieldName,
+                      labelText: 'Notes',
+                      onEditingComplete: () =>
+                          node.requestFocus(submitBtnFocus),
+                      focusNode: notesFocus,
+                      validator: FormBuilderValidators.maxLength(noteMaxLength),
+                      maxLength: noteMaxLength,
+                      textInputAction: TextInputAction.next,
+                      keyboardType: TextInputType.multiline,
+                      textCapitalization: TextCapitalization.sentences,
+                      textAlignVertical: TextAlignVertical.top,
+                      buildCounter: _buildCounter,
+                      maxLines: null,
                     ),
                     const SizedBox(height: 24),
 
@@ -287,7 +382,7 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
   }
 
   String get roHelperText {
-    var helperText = 'Value must have a length equal to 32';
+    var helperText = 'Value must have a length less than to 32';
     if (accountType == 'belron') {
       helperText = 'Value must have a length equal to 14';
     }
@@ -314,4 +409,26 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
       accountType == 'belron' || accountType == 'safelite'
           ? TextInputType.number
           : TextInputType.visiblePassword;
+
+  int get noteMaxLength =>
+      (contactMethodFieldKey.currentState?.value == 'phone')
+          ? 1000 - preferredLanguage.length
+          : 1000;
+
+  Widget? _buildCounter(
+    BuildContext context, {
+    required int currentLength,
+    required int? maxLength,
+    required bool isFocused,
+  }) {
+    int dif = noteMaxLength - currentLength;
+    return Text(
+      '$currentLength / $noteMaxLength',
+      style: TextStyle(
+        color: dif.isNegative ? Colors.red : Colors.black,
+      ),
+    );
+  }
 }
+
+String get preferredLanguage => 'Preferred Language = English\n\n';

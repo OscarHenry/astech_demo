@@ -1,3 +1,4 @@
+import 'package:astech_demo/ui/calibration_submission_form.dart';
 import 'package:astech_demo/ui/local_submission_form.dart';
 import 'package:astech_demo/ui/remote_submission_form.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +48,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               child: const Text('Remote'),
+            ),
+            const SizedBox(height: 18),
+            ElevatedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const CalibrationSubmissionForm(),
+                ),
+              ),
+              child: const Text('Calibration'),
             ),
           ],
         ),

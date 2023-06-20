@@ -12,4 +12,19 @@ class CustomFormatter {
     const String safeliteTextMask = '#####-######';
     return MaskTextInputFormatter(mask: safeliteTextMask);
   }
+
+  static MaskTextInputFormatter usPhoneFormatter() {
+    const String phoneTextMask = '(###) ###-####';
+    return MaskTextInputFormatter(mask: phoneTextMask);
+  }
+
+  static MaskTextInputFormatter mxPhoneFormatter() {
+    const String phoneTextMask = '(##) ####-####';
+    return MaskTextInputFormatter(mask: phoneTextMask);
+  }
+
+  static MaskTextInputFormatter cadPhoneFormatter() {
+    const String phoneTextMask = '(###) ###-####';
+    return MaskTextInputFormatter(mask: phoneTextMask);
+  }
 }

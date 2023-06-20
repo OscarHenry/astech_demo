@@ -1,4 +1,6 @@
 import 'package:astech_demo/commons/distance_unit.dart';
+import 'package:astech_demo/customs/custom_dropdown_group_field.dart';
+import 'package:astech_demo/customs/custom_radio_group_button_field.dart';
 import 'package:astech_demo/customs/custom_text_field.dart';
 import 'package:astech_demo/customs/custom_switch_field.dart';
 import 'package:astech_demo/commons/formatter.dart';
@@ -9,36 +11,30 @@ import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
-class LocalSubmissionForm extends StatefulWidget {
-  const LocalSubmissionForm({super.key});
+class CalibrationSubmissionForm extends StatefulWidget {
+  const CalibrationSubmissionForm({super.key});
 
   @override
-  State<LocalSubmissionForm> createState() => _LocalSubmissionFormState();
+  State<CalibrationSubmissionForm> createState() =>
+      _CalibrationSubmissionFormState();
 }
 
-class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
+class _CalibrationSubmissionFormState extends State<CalibrationSubmissionForm> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   // form field state
   FormBuilderState? get formFieldState => _formKey.currentState;
 
   // form fields
-  late final String roFieldName = 'ro';
-  late final String odometerFieldName = 'odometer';
-  late final String unitFieldName = 'unit';
+  late final String contactMethodFieldName = 'contactMethod';
 
   // form fields key
-  late final GlobalKey<FormBuilderFieldState> roFieldKey =
-      GlobalKey<FormBuilderFieldState>(debugLabel: roFieldName);
-  late final GlobalKey<FormBuilderFieldState> odometerFieldKey =
-      GlobalKey<FormBuilderFieldState>(debugLabel: odometerFieldName);
-  late final GlobalKey<FormBuilderFieldState> unitFieldKey =
-      GlobalKey<FormBuilderFieldState>(debugLabel: unitFieldName);
+  late final GlobalKey<FormBuilderFieldState> contactMethodFieldKey =
+      GlobalKey<FormBuilderFieldState>(debugLabel: contactMethodFieldName);
 
   // focus
-  late final FocusNode roFocus = FocusNode(debugLabel: roFieldName);
-  late final FocusNode odometerFocus = FocusNode(debugLabel: odometerFieldName);
-  late final FocusNode unitFocus = FocusNode(debugLabel: unitFieldName);
+  late final FocusNode contactMethodFocus =
+      FocusNode(debugLabel: contactMethodFieldName);
   late final FocusNode cancelBtnFocus = FocusNode(debugLabel: 'cancel');
   late final FocusNode submitBtnFocus = FocusNode(debugLabel: 'submit');
 
@@ -50,23 +46,24 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
     accountType = 'safelite';
 
     // pre-populate data
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      // init data
-      _formKey.currentState?.patchValue({
+    if (mounted) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        // init data
+        // _formKey.currentState?.patchValue({
         // roField.name: '',
         // odometerField.name: '',
-        unitFieldName: DistanceUnit.miles,
+        // unitFieldName: DistanceUnit.miles,
+        // warningLightFieldName: false,
+        // });
       });
-    });
+    }
 
     super.initState();
   }
 
   @override
   void dispose() {
-    roFocus.dispose();
-    odometerFocus.dispose();
-    unitFocus.dispose();
+    contactMethodFocus.dispose();
     cancelBtnFocus.dispose();
     submitBtnFocus.dispose();
     super.dispose();
@@ -79,7 +76,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
       extendBody: true,
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Local'),
+        title: const Text('Remote'),
         backgroundColor: Colors.white,
         bottom: const PreferredSize(
           preferredSize: Size.fromHeight(1),
@@ -89,6 +86,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
       body: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// Header with Vehicle Information
             Container(
@@ -99,86 +97,51 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
                 color: Colors.white,
                 boxShadow: kElevationToShadow[2],
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('form isValid: ${formFieldState?.isValid}'),
-                  Expanded(
-                    child: Text('fieldsValues: ${formFieldState?.value}'),
-                  ),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('form isValid: ${formFieldState?.isValid}'),
+                    Text('fieldsValues: ${formFieldState?.value}'),
+                  ],
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 24.0),
+              child: Text(
+                'Vehicle Information',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
             FormBuilder(
               key: _formKey,
               onChanged: () {
                 formFieldState!.save();
-                setState(() {});
+                if (mounted) {
+                  setState(() {});
+                }
               },
               child: Padding(
                 padding: const EdgeInsets.all(24.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    /// Ro/Job ID Input
-                    CustomTextField(
-                      fieldKey: roFieldKey,
-                      name: roFieldName,
+                    /// Preferred Contact Method Input
+                    CustomDropdownGroupField<String>(
+                      fieldKey: contactMethodFieldKey,
+                      name: contactMethodFieldName,
+                      labelText: 'Preferred contact method?',
                       required: true,
-                      labelText: roLabelText,
-                      hintText: roHintText,
-                      helpText: roHelperText,
-                      maxLength: 32,
-                      counterVisibility: true,
-                      inputFormatters: roInputFormatters,
-                      onEditingComplete: () => node.nextFocus(),
-                      focusNode: roFocus,
-                      validator: roValidator,
-                      textInputAction: TextInputAction.next,
-                      keyboardType: roKeyboardType,
-                    ),
-                    const SizedBox(height: 18),
-
-                    /// Odometer
-                    Row(
-                      children: [
-                        /// Odometer Input
-                        Expanded(
-                          child: CustomTextField(
-                            fieldKey: odometerFieldKey,
-                            name: odometerFieldName,
-                            required: true,
-                            labelText: 'Odometer',
-                            hintText: 'Odometer',
-                            validator: FormBuilderValidators.compose<String>([
-                              FormBuilderValidators.maxLength(7),
-                            ]),
-                            maxLength: 7,
-                            focusNode: odometerFocus,
-                            onEditingComplete: () =>
-                                node.requestFocus(submitBtnFocus),
-                            textInputAction: TextInputAction.done,
-                            keyboardType: TextInputType.number,
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-
-                        /// Unit Selector
-                        Expanded(
-                          child: CustomSwitchField<DistanceUnit>(
-                            fieldKey: unitFieldKey,
-                            name: unitFieldName,
-                            required: true,
-                            items: DistanceUnit.values
-                                .map(
-                                  (e) =>
-                                      SwitchItem(title: e.shortName, value: e),
-                                )
-                                .toList(),
-                          ),
-                        ),
+                      focusNode: contactMethodFocus,
+                      items: const [
+                        DropdownGroupItem<String>(value: 'chat', title: 'Chat'),
+                        DropdownGroupItem<String>(
+                            value: 'phone', title: 'Phone'),
+                        DropdownGroupItem<String>(value: 'text', title: 'Text'),
                       ],
+                      onChanged: (_) => node.requestFocus(submitBtnFocus),
                     ),
                     const SizedBox(height: 24),
 
@@ -227,7 +190,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
   }
 
   String get roHelperText {
-    var helperText = 'Value must have a length less than 32';
+    var helperText = 'Value must have a length equal to 32';
     if (accountType == 'belron') {
       helperText = 'Value must have a length equal to 14';
     }

@@ -15,7 +15,7 @@ class CustomTextField extends StatelessWidget {
     this.required = false,
     this.validator,
     this.maxLength,
-    this.counterVisibility = false,
+    this.counterVisibility = true,
     this.controller,
     this.autofocus = true,
     this.focusNode,
@@ -32,7 +32,11 @@ class CustomTextField extends StatelessWidget {
     this.maxLengthEnforcement,
     this.keyboardType,
     this.textInputAction,
-    this.maxLines,
+    this.maxLines = 1,
+    this.capitalization,
+    this.buildCounter,
+    this.textCapitalization = TextCapitalization.none,
+    this.textAlignVertical,
   });
 
   final GlobalKey<FormBuilderFieldState>? fieldKey;
@@ -62,6 +66,10 @@ class CustomTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
   final int? maxLines;
+  final int? capitalization;
+  final InputCounterWidgetBuilder? buildCounter;
+  final TextCapitalization textCapitalization;
+  final TextAlignVertical? textAlignVertical;
 
   bool get hasError => fieldKey?.currentState?.hasError == true;
   bool get isTouched => fieldKey?.currentState?.isTouched == true;
@@ -104,7 +112,7 @@ class CustomTextField extends StatelessWidget {
                 filled: true,
                 fillColor: Colors.grey[100],
                 hintText: hintText,
-                counterText: counterVisibility ? '' : null,
+                counterText: counterVisibility ? null : '',
                 helperText: helpText,
                 helperStyle: TextStyle(color: helperColor),
                 errorStyle: TextStyle(color: errorColor),
@@ -129,6 +137,9 @@ class CustomTextField extends StatelessWidget {
               onSaved: onSaved,
               onSubmitted: onSubmitted,
               onReset: onReset,
+              buildCounter: buildCounter,
+              textCapitalization: textCapitalization,
+              textAlignVertical: textAlignVertical,
             );
           },
         ),
