@@ -1,3 +1,4 @@
+import 'package:astech_demo/widgets/field_label_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -54,57 +55,63 @@ class CustomDropdownGroupField<T> extends StatelessWidget {
       children: [
         Expanded(
           flex: 4,
-          child: Text.rich(
-            TextSpan(
-              text: labelText,
-              style: labelStyle,
-              children: [
-                if (required)
-                  const TextSpan(
-                    text: ' *',
-                    style: TextStyle(color: Colors.redAccent),
-                  ),
-              ],
-            ),
-          ),
+          child: FieldLabelText(
+              labelText: labelText,
+              labelTextStyle: labelStyle,
+              required: required),
         ),
         const SizedBox(width: 24),
         Expanded(
           flex: 3,
-          child: FormBuilderField<T>(
-            key: fieldKey,
-            name: name,
-            initialValue: initialValue,
-            focusNode: focusNode,
-            validator: _buildValidator(),
-            autovalidateMode: autovalidateMode,
-            onChanged: onChanged,
-            builder: (field) {
-              return DropdownButtonFormField<T>(
-                value: field.value,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.grey[100],
-                  hintText: hintText,
-                  helperText: helpText,
-                  helperStyle: TextStyle(color: helperColor),
-                  errorStyle: TextStyle(color: errorColor),
-                  focusedErrorBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: errorBorderColor, width: 2),
-                  ),
-                ),
-                style: titleItemStyle,
-                items: items
-                    .map<DropdownMenuItem<T>>(
-                      (e) => DropdownMenuItem<T>(
-                        value: e.value,
-                        child: Text(e.title),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              FormBuilderField<T>(
+                key: fieldKey,
+                name: name,
+                initialValue: initialValue,
+                focusNode: focusNode,
+                validator: _buildValidator(),
+                autovalidateMode: autovalidateMode,
+                onChanged: onChanged,
+                builder: (field) {
+                  return DropdownButtonFormField<T>(
+                    value: field.value,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.grey[100],
+                      hintText: hintText,
+                      errorStyle: const TextStyle(
+                        color: Colors.transparent,
+                        fontSize: 0,
                       ),
-                    )
-                    .toList(),
-                onChanged: (value) => field.didChange(value),
-              );
-            },
+                      focusedErrorBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: errorBorderColor, width: 2),
+                      ),
+                    ),
+                    style: titleItemStyle,
+                    items: items
+                        .map<DropdownMenuItem<T>>(
+                          (e) => DropdownMenuItem<T>(
+                            value: e.value,
+                            child: Text(e.title),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (value) => field.didChange(value),
+                  );
+                },
+              ),
+              const SizedBox(height: 4),
+              if (helpText != null) ...[
+                Text(
+                  helpText!,
+                  style: TextStyle(color: helperColor),
+                ),
+              ],
+            ],
           ),
         ),
       ],
@@ -114,31 +121,20 @@ class CustomDropdownGroupField<T> extends StatelessWidget {
   Color get helperColor {
     Color helperColor = Colors.black;
 
-    if (hasError == true && isRequiredError) {
-      helperColor = Colors.black;
+    if (hasError && !isFocused) {
+      helperColor = Colors.red;
     }
 
-    if (isFocused && !hasError) {
-      helperColor = Colors.blue;
+    if (isFocused) {
+      if (isRequiredError) {
+        helperColor = Colors.black;
+      } else {
+        helperColor = Colors.blue;
+      }
     }
 
     // debugPrint('getHelperColor[$name]: $_helperColor');
     return helperColor;
-  }
-
-  Color get errorColor {
-    Color errorColor = Colors.red;
-
-    if (isFocused) {
-      if (isRequiredError) {
-        errorColor = Colors.black;
-      } else {
-        errorColor = Colors.blue;
-      }
-    }
-
-    // debugPrint('getErrorColor[$name]: $_errorColor');
-    return errorColor;
   }
 
   Color get errorBorderColor {

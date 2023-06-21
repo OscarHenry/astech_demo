@@ -1,3 +1,4 @@
+import 'package:astech_demo/widgets/field_label_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -30,6 +31,7 @@ class CustomRadioGroupField<T> extends StatelessWidget {
     this.validator,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
     this.focusNode,
+    this.helpText,
   }) : super(key: key);
 
   const CustomRadioGroupField.binary({
@@ -43,11 +45,13 @@ class CustomRadioGroupField<T> extends StatelessWidget {
     this.validator,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
     this.focusNode,
+    this.helpText,
   }) : items = binarySelection as List<RadioGroupItem<T>>;
 
   final GlobalKey<FormBuilderFieldState>? fieldKey;
   final String name;
   final String labelText;
+  final String? helpText;
   final List<RadioGroupItem<T>> items;
   final T? initialValue;
   final Function(T? value)? onChanged;
@@ -55,6 +59,13 @@ class CustomRadioGroupField<T> extends StatelessWidget {
   final AutovalidateMode autovalidateMode;
   final FocusNode? focusNode;
   final FormFieldValidator<T>? validator;
+
+  bool get hasError => fieldKey?.currentState?.hasError == true;
+  bool get isTouched => fieldKey?.currentState?.isTouched == true;
+  bool get isValid => fieldKey?.currentState?.isValid == true;
+  bool get isRequiredError =>
+      (fieldKey?.currentState?.value)?.isEmpty == true && required;
+  bool get isFocused => focusNode?.hasPrimaryFocus == true;
 
   @override
   Widget build(BuildContext context) {
@@ -73,18 +84,22 @@ class CustomRadioGroupField<T> extends StatelessWidget {
           children: [
             Expanded(
               flex: 4,
-              child: Text.rich(
-                TextSpan(
-                  text: labelText,
-                  style: labelStyle,
-                  children: [
-                    if (required)
-                      const TextSpan(
-                        text: ' *',
-                        style: TextStyle(color: Colors.redAccent),
-                      ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  FieldLabelText(
+                      labelText: labelText,
+                      labelTextStyle: labelStyle,
+                      required: required),
+                  const SizedBox(height: 4),
+                  if (helpText != null) ...[
+                    Text(
+                      helpText!,
+                      style: TextStyle(color: helperColor),
+                    ),
                   ],
-                ),
+                ],
               ),
             ),
             const SizedBox(width: 24),
@@ -122,6 +137,36 @@ class CustomRadioGroupField<T> extends StatelessWidget {
       },
       onChanged: onChanged,
     );
+  }
+
+  Color get helperColor {
+    Color helperColor = Colors.black;
+
+    if (hasError && !isFocused) {
+      helperColor = Colors.red;
+    }
+
+    if (isFocused) {
+      if (isRequiredError) {
+        helperColor = Colors.black;
+      } else {
+        helperColor = Colors.blue;
+      }
+    }
+
+    // debugPrint('getHelperColor[$name]: $_helperColor');
+    return helperColor;
+  }
+
+  Color get errorBorderColor {
+    Color errorColor = Colors.red;
+
+    if (isFocused) {
+      errorColor = Colors.blueAccent;
+    }
+
+    // debugPrint('getErrorColor[$name]: $_errorColor');
+    return errorColor;
   }
 
   FormFieldValidator<T>? _buildValidator() {

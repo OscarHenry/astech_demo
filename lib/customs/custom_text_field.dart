@@ -1,3 +1,4 @@
+import 'package:astech_demo/widgets/field_label_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -39,7 +40,8 @@ class CustomTextField extends StatelessWidget {
     this.textAlignVertical,
   });
 
-  final GlobalKey<FormBuilderFieldState>? fieldKey;
+  final GlobalKey<FormBuilderFieldState<FormBuilderField<String>, String>>?
+      fieldKey;
   final String name;
   final TextEditingController? controller;
   final String? labelText;
@@ -75,71 +77,77 @@ class CustomTextField extends StatelessWidget {
   bool get isTouched => fieldKey?.currentState?.isTouched == true;
   bool get isValid => fieldKey?.currentState?.isValid == true;
   bool get isRequiredError =>
-      (fieldKey?.currentState?.value as String?)?.isEmpty == true && required;
+      (fieldKey?.currentState?.value)?.isEmpty == true && required;
   bool get isFocused => focusNode?.hasPrimaryFocus == true;
 
   @override
   Widget build(BuildContext context) {
+    TextStyle labelStyle = const TextStyle(color: Colors.black);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         if (labelText != null)
-          Text.rich(
-            TextSpan(
-              text: labelText,
-              style: const TextStyle(color: Colors.black),
-              children: [
-                if (required)
-                  const TextSpan(
-                    text: ' *',
-                    style: TextStyle(color: Colors.redAccent),
-                  ),
-              ],
-            ),
-          ),
+          FieldLabelText(
+              labelText: labelText,
+              labelTextStyle: labelStyle,
+              required: required),
         const SizedBox(height: 4),
         StatefulBuilder(
           builder: (_, setState) {
             _listenOnFocusChange(setState);
-            return FormBuilderTextField(
-              key: fieldKey,
-              name: name,
-              controller: controller,
-              autovalidateMode: autovalidateMode,
-              validator: buildValidator(),
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.grey[100],
-                hintText: hintText,
-                counterText: counterVisibility ? null : '',
-                helperText: helpText,
-                helperStyle: TextStyle(color: helperColor),
-                errorStyle: TextStyle(color: errorColor),
-                focusedErrorBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: errorBorderColor, width: 2),
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                FormBuilderTextField(
+                  key: fieldKey,
+                  name: name,
+                  controller: controller,
+                  autovalidateMode: autovalidateMode,
+                  validator: buildValidator(),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.grey[100],
+                    hintText: hintText,
+                    counterText: counterVisibility ? null : '',
+                    errorStyle: const TextStyle(
+                      color: Colors.transparent,
+                      fontSize: 0,
+                    ),
+                    focusedErrorBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: errorBorderColor, width: 2),
+                    ),
+                  ),
+                  inputFormatters: inputFormatters,
+                  style: style,
+                  enabled: enabled,
+                  keyboardType: keyboardType,
+                  maxLengthEnforcement: maxLengthEnforcement,
+                  obscureText: obscureText,
+                  readOnly: readOnly,
+                  maxLines: maxLines,
+                  maxLength: maxLength,
+                  focusNode: focusNode,
+                  autofocus: autofocus,
+                  onChanged: onChanged,
+                  textInputAction: textInputAction,
+                  onEditingComplete: onEditingComplete,
+                  onSaved: onSaved,
+                  onSubmitted: onSubmitted,
+                  onReset: onReset,
+                  buildCounter: buildCounter,
+                  textCapitalization: textCapitalization,
+                  textAlignVertical: textAlignVertical,
                 ),
-              ),
-              inputFormatters: inputFormatters,
-              style: style,
-              enabled: enabled,
-              keyboardType: keyboardType,
-              maxLengthEnforcement: maxLengthEnforcement,
-              obscureText: obscureText,
-              readOnly: readOnly,
-              maxLines: maxLines,
-              maxLength: maxLength,
-              focusNode: focusNode,
-              autofocus: autofocus,
-              onChanged: onChanged,
-              textInputAction: textInputAction,
-              onEditingComplete: onEditingComplete,
-              onSaved: onSaved,
-              onSubmitted: onSubmitted,
-              onReset: onReset,
-              buildCounter: buildCounter,
-              textCapitalization: textCapitalization,
-              textAlignVertical: textAlignVertical,
+                const SizedBox(height: 4),
+                if (helpText != null) ...[
+                  Text(
+                    helpText!,
+                    style: TextStyle(color: helperColor),
+                  ),
+                ],
+              ],
             );
           },
         ),
@@ -157,31 +165,20 @@ class CustomTextField extends StatelessWidget {
   Color get helperColor {
     Color helperColor = Colors.black;
 
-    if (hasError == true && isRequiredError) {
-      helperColor = Colors.black;
+    if (hasError && !isFocused) {
+      helperColor = Colors.red;
     }
 
-    if (isFocused && !hasError) {
-      helperColor = Colors.blue;
+    if (isFocused) {
+      if (isRequiredError) {
+        helperColor = Colors.black;
+      } else {
+        helperColor = Colors.blue;
+      }
     }
 
     // debugPrint('getHelperColor[$name]: $_helperColor');
     return helperColor;
-  }
-
-  Color get errorColor {
-    Color errorColor = Colors.red;
-
-    if (isFocused) {
-      if (isRequiredError) {
-        errorColor = Colors.black;
-      } else {
-        errorColor = Colors.blue;
-      }
-    }
-
-    // debugPrint('getErrorColor[$name]: $_errorColor');
-    return errorColor;
   }
 
   Color get errorBorderColor {
@@ -196,8 +193,9 @@ class CustomTextField extends StatelessWidget {
   }
 
   FormFieldValidator<String>? buildValidator() {
-    return FormBuilderValidators.compose([
-      if (required) FormBuilderValidators.required(errorText: helpText ?? ''),
+    return FormBuilderValidators.compose<String>([
+      if (required)
+        FormBuilderValidators.required<String>(errorText: helpText ?? ''),
       if (validator != null) validator!,
     ]);
   }

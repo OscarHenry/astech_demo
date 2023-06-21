@@ -1,4 +1,5 @@
 import 'package:astech_demo/commons/formatter.dart';
+import 'package:astech_demo/widgets/field_label_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -22,7 +23,7 @@ class CustomPhoneNumberField extends StatefulWidget {
     this.hintText,
     this.helpText = 'Area code +7 digit #',
     this.initialRegionInfo,
-    required this.regions,
+    required this.countries,
     this.controller,
     this.maxLength,
     this.counterVisibility = true,
@@ -50,7 +51,7 @@ class CustomPhoneNumberField extends StatefulWidget {
   final String labelText;
   final String? initialValue;
   final RegionInfo? initialRegionInfo;
-  final List<RegionInfo> regions;
+  final List<RegionInfo> countries;
   final String? hintText;
   final String? helpText;
   final bool required;
@@ -97,7 +98,7 @@ class _CustomPhoneNumberFieldState extends State<CustomPhoneNumberField> {
   bool get isFocused => widget.focusNode?.hasPrimaryFocus == true;
 
   late RegionInfo _selectedCountryCode =
-      widget.initialRegionInfo ?? widget.regions.first;
+      widget.initialRegionInfo ?? widget.countries.first;
 
   @override
   void initState() {
@@ -114,18 +115,10 @@ class _CustomPhoneNumberFieldState extends State<CustomPhoneNumberField> {
         Container(
           alignment: Alignment.center,
           height: kMinInteractiveDimension,
-          child: Text.rich(
-            TextSpan(
-              text: widget.labelText,
-              style: labelStyle,
-              children: [
-                if (widget.required)
-                  const TextSpan(
-                    text: ' *',
-                    style: TextStyle(color: Colors.redAccent),
-                  ),
-              ],
-            ),
+          child: FieldLabelText(
+            labelText: widget.labelText,
+            labelTextStyle: labelStyle,
+            required: widget.required,
           ),
         ),
         const SizedBox(width: 24),
@@ -201,7 +194,7 @@ class _CustomPhoneNumberFieldState extends State<CustomPhoneNumberField> {
       isExpanded: false,
       decoration: countryCodeInputDecorator,
       style: titleItemStyle,
-      items: widget.regions
+      items: widget.countries
           .map<DropdownMenuItem<RegionInfo>>(
             (e) => DropdownMenuItem<RegionInfo>(
               value: e,

@@ -1,7 +1,9 @@
 import 'package:astech_demo/commons/distance_unit.dart';
+import 'package:astech_demo/commons/mixins.dart';
 import 'package:astech_demo/customs/custom_text_field.dart';
 import 'package:astech_demo/customs/custom_switch_field.dart';
 import 'package:astech_demo/commons/formatter.dart';
+import 'package:astech_demo/ui/remote_submission_form.dart';
 import 'package:astech_demo/widgets/bottom_navigation_form.dart';
 import 'package:astech_demo/widgets/required_foot_note.dart';
 import 'package:flutter/material.dart';
@@ -16,31 +18,32 @@ class LocalSubmissionForm extends StatefulWidget {
   State<LocalSubmissionForm> createState() => _LocalSubmissionFormState();
 }
 
-class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
+class _LocalSubmissionFormState extends State<LocalSubmissionForm>
+    with FormMixin {
   final _formKey = GlobalKey<FormBuilderState>();
 
   // form field state
   FormBuilderState? get formFieldState => _formKey.currentState;
 
   // form fields
-  late final String roFieldName = 'ro';
-  late final String odometerFieldName = 'odometer';
-  late final String unitFieldName = 'unit';
+  // late final String roFieldName = 'ro';
+  // late final String odometerFieldName = 'odometer';
+  // late final String unitFieldName = 'unit';
 
   // form fields key
-  late final GlobalKey<FormBuilderFieldState> roFieldKey =
-      GlobalKey<FormBuilderFieldState>(debugLabel: roFieldName);
-  late final GlobalKey<FormBuilderFieldState> odometerFieldKey =
-      GlobalKey<FormBuilderFieldState>(debugLabel: odometerFieldName);
-  late final GlobalKey<FormBuilderFieldState> unitFieldKey =
-      GlobalKey<FormBuilderFieldState>(debugLabel: unitFieldName);
+  // late final GlobalKey<FormBuilderFieldState> roFieldKey =
+  //     GlobalKey<FormBuilderFieldState>(debugLabel: roFieldName);
+  // late final GlobalKey<FormBuilderFieldState> odometerFieldKey =
+  //     GlobalKey<FormBuilderFieldState>(debugLabel: odometerFieldName);
+  // late final GlobalKey<FormBuilderFieldState> unitFieldKey =
+  //     GlobalKey<FormBuilderFieldState>(debugLabel: unitFieldName);
 
   // focus
-  late final FocusNode roFocus = FocusNode(debugLabel: roFieldName);
-  late final FocusNode odometerFocus = FocusNode(debugLabel: odometerFieldName);
-  late final FocusNode unitFocus = FocusNode(debugLabel: unitFieldName);
-  late final FocusNode cancelBtnFocus = FocusNode(debugLabel: 'cancel');
-  late final FocusNode submitBtnFocus = FocusNode(debugLabel: 'submit');
+  // late final FocusNode roFocus = FocusNode(debugLabel: roFieldName);
+  // late final FocusNode odometerFocus = FocusNode(debugLabel: odometerFieldName);
+  // late final FocusNode unitFocus = FocusNode(debugLabel: unitFieldName);
+  // late final FocusNode cancelBtnFocus = FocusNode(debugLabel: 'cancel');
+  // late final FocusNode submitBtnFocus = FocusNode(debugLabel: 'submit');
 
   // AccountType
   late final String accountType;
@@ -52,7 +55,7 @@ class _LocalSubmissionFormState extends State<LocalSubmissionForm> {
     // pre-populate data
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // init data
-      _formKey.currentState?.patchValue({
+      formFieldState?.patchValue({
         // roField.name: '',
         // odometerField.name: '',
         unitFieldName: DistanceUnit.miles,

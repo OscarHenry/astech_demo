@@ -1,4 +1,5 @@
 import 'package:astech_demo/commons/distance_unit.dart';
+import 'package:astech_demo/commons/mixins.dart';
 import 'package:astech_demo/customs/custom_dropdown_group_field.dart';
 import 'package:astech_demo/customs/custom_phone_number_field.dart';
 import 'package:astech_demo/customs/custom_radio_group_button_field.dart';
@@ -9,8 +10,8 @@ import 'package:astech_demo/widgets/bottom_navigation_form.dart';
 import 'package:astech_demo/widgets/required_foot_note.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:form_builder_phone_field/form_builder_phone_field.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:phone_number/phone_number.dart';
 
@@ -21,62 +22,63 @@ class RemoteSubmissionForm extends StatefulWidget {
   State<RemoteSubmissionForm> createState() => _RemoteSubmissionFormState();
 }
 
-class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
+class _RemoteSubmissionFormState extends State<RemoteSubmissionForm>
+    with FormMixin {
   final _formKey = GlobalKey<FormBuilderState>();
 
   // form field state
   FormBuilderState? get formFieldState => _formKey.currentState;
 
   // form fields
-  late final String roFieldName = 'ro';
-  late final String odometerFieldName = 'odometer';
-  late final String unitFieldName = 'unit';
-  late final String warningLightFieldName = 'warningLight';
-  late final String srsDeployedFieldName = 'srsDeployed';
-  late final String drivableFieldName = 'drivable';
-  late final String contactMethodFieldName = 'contactMethod';
-  late final String notesFieldName = 'notes';
-  late final String phoneFieldName = 'phone';
+  // late final String roFieldName = 'ro';
+  // late final String odometerFieldName = 'odometer';
+  // late final String unitFieldName = 'unit';
+  // late final String warningLightFieldName = 'warningLight';
+  // late final String srsDeployedFieldName = 'srsDeployed';
+  // late final String drivableFieldName = 'drivable';
+  // late final String contactMethodFieldName = 'contactMethod';
+  // late final String notesFieldName = 'notes';
+  // late final String phoneFieldName = 'phone';
 
   // form fields key
-  late final GlobalKey<FormBuilderFieldState> roFieldKey =
-      GlobalKey<FormBuilderFieldState>(debugLabel: roFieldName);
-  late final GlobalKey<FormBuilderFieldState> odometerFieldKey =
-      GlobalKey<FormBuilderFieldState>(debugLabel: odometerFieldName);
-  late final GlobalKey<FormBuilderFieldState> unitFieldKey =
-      GlobalKey<FormBuilderFieldState>(debugLabel: unitFieldName);
-  late final GlobalKey<FormBuilderFieldState> warningLightFieldKey =
-      GlobalKey<FormBuilderFieldState>(debugLabel: warningLightFieldName);
-  late final GlobalKey<FormBuilderFieldState> srsDeployedFieldKey =
-      GlobalKey<FormBuilderFieldState>(debugLabel: srsDeployedFieldName);
-  late final GlobalKey<FormBuilderFieldState> drivableFieldKey =
-      GlobalKey<FormBuilderFieldState>(debugLabel: drivableFieldName);
-  late final GlobalKey<FormBuilderFieldState<FormBuilderField<String>, String>>
-      contactMethodFieldKey =
-      GlobalKey<FormBuilderFieldState<FormBuilderField<String>, String>>(
-          debugLabel: contactMethodFieldName);
-  late final GlobalKey<FormBuilderFieldState<FormBuilderField<String>, String>>
-      notesFieldKey =
-      GlobalKey<FormBuilderFieldState<FormBuilderField<String>, String>>(
-          debugLabel: notesFieldName);
-  late final GlobalKey<FormBuilderFieldState> phoneFieldKey =
-      GlobalKey<FormBuilderFieldState>(debugLabel: phoneFieldName);
+  // late final GlobalKey<FormBuilderFieldState> roFieldKey =
+  //     GlobalKey<FormBuilderFieldState>(debugLabel: roFieldName);
+  // late final GlobalKey<FormBuilderFieldState> odometerFieldKey =
+  //     GlobalKey<FormBuilderFieldState>(debugLabel: odometerFieldName);
+  // late final GlobalKey<FormBuilderFieldState> unitFieldKey =
+  //     GlobalKey<FormBuilderFieldState>(debugLabel: unitFieldName);
+  // late final GlobalKey<FormBuilderFieldState> warningLightFieldKey =
+  //     GlobalKey<FormBuilderFieldState>(debugLabel: warningLightFieldName);
+  // late final GlobalKey<FormBuilderFieldState> srsDeployedFieldKey =
+  //     GlobalKey<FormBuilderFieldState>(debugLabel: srsDeployedFieldName);
+  // late final GlobalKey<FormBuilderFieldState> drivableFieldKey =
+  //     GlobalKey<FormBuilderFieldState>(debugLabel: drivableFieldName);
+  // late final GlobalKey<FormBuilderFieldState<FormBuilderField<String>, String>>
+  //     contactMethodFieldKey =
+  //     GlobalKey<FormBuilderFieldState<FormBuilderField<String>, String>>(
+  //         debugLabel: contactMethodFieldName);
+  // late final GlobalKey<FormBuilderFieldState<FormBuilderField<String>, String>>
+  //     notesFieldKey =
+  //     GlobalKey<FormBuilderFieldState<FormBuilderField<String>, String>>(
+  //         debugLabel: notesFieldName);
+  // late final GlobalKey<FormBuilderFieldState> phoneFieldKey =
+  //     GlobalKey<FormBuilderFieldState>(debugLabel: phoneFieldName);
 
   // focus
-  late final FocusNode roFocus = FocusNode(debugLabel: roFieldName);
-  late final FocusNode odometerFocus = FocusNode(debugLabel: odometerFieldName);
-  late final FocusNode unitFocus = FocusNode(debugLabel: unitFieldName);
-  late final FocusNode warningLightFocus =
-      FocusNode(debugLabel: warningLightFieldName);
-  late final FocusNode srsDeployedFocus =
-      FocusNode(debugLabel: srsDeployedFieldName);
-  late final FocusNode drivableFocus = FocusNode(debugLabel: drivableFieldName);
-  late final FocusNode contactMethodFocus =
-      FocusNode(debugLabel: contactMethodFieldName);
-  late final FocusNode notesFocus = FocusNode(debugLabel: notesFieldName);
-  late final FocusNode phoneFocus = FocusNode(debugLabel: phoneFieldName);
-  late final FocusNode cancelBtnFocus = FocusNode(debugLabel: 'cancel');
-  late final FocusNode submitBtnFocus = FocusNode(debugLabel: 'submit');
+  // late final FocusNode roFocus = FocusNode(debugLabel: roFieldName);
+  // late final FocusNode odometerFocus = FocusNode(debugLabel: odometerFieldName);
+  // late final FocusNode unitFocus = FocusNode(debugLabel: unitFieldName);
+  // late final FocusNode warningLightFocus =
+  //     FocusNode(debugLabel: warningLightFieldName);
+  // late final FocusNode srsDeployedFocus =
+  //     FocusNode(debugLabel: srsDeployedFieldName);
+  // late final FocusNode drivableFocus = FocusNode(debugLabel: drivableFieldName);
+  // late final FocusNode contactMethodFocus =
+  //     FocusNode(debugLabel: contactMethodFieldName);
+  // late final FocusNode notesFocus = FocusNode(debugLabel: notesFieldName);
+  // late final FocusNode phoneFocus = FocusNode(debugLabel: phoneFieldName);
+  // late final FocusNode cancelBtnFocus = FocusNode(debugLabel: 'cancel');
+  // late final FocusNode submitBtnFocus = FocusNode(debugLabel: 'submit');
 
   // AccountType
   late final String accountType;
@@ -88,7 +90,7 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
     // pre-populate data
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // init data
-      _formKey.currentState?.patchValue({
+      formFieldState?.patchValue({
         // roField.name: '',
         // odometerField.name: '',
         unitFieldName: DistanceUnit.miles,
@@ -287,34 +289,36 @@ class _RemoteSubmissionFormState extends State<RemoteSubmissionForm> {
                       onChanged: (_) => node.requestFocus(submitBtnFocus),
                     ),
 
-                    if (contactMethodFieldKey.currentState?.value ==
-                        'text') ...[
-                      const SizedBox(height: 18),
-                      CustomPhoneNumberField(
-                        fieldKey: phoneFieldKey,
-                        name: phoneFieldName,
-                        focusNode: phoneFocus,
-                        labelText: 'Phone',
-                        required: true,
-                        regions: const [
-                          RegionInfo(
-                            name: 'United State',
-                            code: 'US',
-                            prefix: 1,
-                          ),
-                          RegionInfo(
-                            name: 'Canada',
-                            code: 'CAD',
-                            prefix: 1,
-                          ),
-                          RegionInfo(
-                            name: 'Mexico',
-                            code: 'MX',
-                            prefix: 52,
-                          )
-                        ],
+                    if (contactMethodFieldKey.currentState?.value == 'text')
+                      ...[
+                        const SizedBox(height: 18),
+                        CustomPhoneNumberField(
+                          fieldKey: phoneFieldKey,
+                          name: phoneFieldName,
+                          focusNode: phoneFocus,
+                          labelText: 'Phone',
+                          required: true,
+                          countries: const [
+                            RegionInfo(
+                              name: 'United State',
+                              code: 'US',
+                              prefix: 1,
+                            ),
+                            RegionInfo(
+                              name: 'Canada',
+                              code: 'CAD',
+                              prefix: 1,
+                            ),
+                            RegionInfo(
+                              name: 'Mexico',
+                              code: 'MX',
+                              prefix: 52,
+                            )
+                          ],
+                        ),
+                      ].animate(
+                        effects: [const MoveEffect()],
                       ),
-                    ],
 
                     const SizedBox(height: 18),
 
